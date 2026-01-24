@@ -13,12 +13,15 @@ import Jobs from '../components/Jobs'
 import Navbar from '../components/Navbar'
 import Consultation from '../components/Consultation'
 import Clients from '../components/Clients'
+import Marquee from '../components/Marquee'
 
 const Home = () => {
   return (
     <div>
+      
         <Navbar/>
         <Hero/>
+        <Marquee/>
         <HeroCards/>
         <Vision/>
         <Clients/>

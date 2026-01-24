@@ -28,6 +28,11 @@ export default {
           '0%': { opacity: '0' },
           '100%': { opacity: '1' },
         },
+        marquee: {
+  '0%': { transform: 'translateX(0)' },
+  '100%': { transform: 'translateX(-50%)' },
+},
+
       },
       animation: {
         fadeInUp: 'fadeInUp 0.8s ease-out forwards',
@@ -35,7 +40,14 @@ export default {
         fadeInLeft: 'fadeInLeft 0.8s ease-out forwards',
         fadeInRight: 'fadeInRight 0.8s ease-out forwards',
         fadeIn: 'fadeIn 1s ease-out forwards',
+        marquee: 'marquee 20s linear infinite',
+        marqueeSlow: 'marquee 35s linear infinite',
+marqueeMedium: 'marquee 28s linear infinite',
+marqueeFast: 'marquee 22s linear infinite',
+
+
       },
+      
 
       // Colors
       colors: {

@@ -15,37 +15,26 @@ const Navbar = () => {
   ];
 
   return (
-    <header className="w-full bg-white shadow-lg fixed top-0 z-50">
-      <div className="max-w-7xl mx-auto px-6 py-5 grid grid-cols-3 items-center">
+    <header className="w-full bg-azure shadow-lg fixed top-0 z-50 h-24">
+      <div className="max-w-7xl mx-auto px-6 h-full flex items-center justify-between relative">
         
         {/* LEFT — LOGO */}
-        <div className="flex justify-start">
-          <img
-            src={consulateLogo}
-            alt="Consulate Recruitment"
-            className="h-24"
-          />
+        <div className="flex-shrink-0">
+          <img src={consulateLogo} alt="Consulate Recruitment" className="h-20" />
         </div>
 
         {/* CENTER — NAV LINKS */}
-        <nav className="hidden lg:flex justify-center space-x-8 text- font-medium text-gray-700">
+        <nav className="hidden lg:flex absolute left-1/2 transform -translate-x-1/2 space-x-8 text-sm font-medium text-white">
           {navLinks.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              className="hover:text-footer transition"
-            >
+            <a key={link.name} href={link.href} className="hover:text-footer transition">
               {link.name}
             </a>
           ))}
         </nav>
 
         {/* RIGHT — ACTIONS */}
-        <div className="hidden lg:flex justify-end items-center space-x-4">
-          <a
-            href="#contact"
-            className="text-sm font-medium text-gray-700 hover:text-footer"
-          >
+        <div className="hidden lg:flex items-center space-x-4">
+          <a href="#contact" className="text-sm font-medium text-white hover:text-footer">
             Contact
           </a>
 
@@ -59,7 +48,7 @@ const Navbar = () => {
 
         {/* MOBILE MENU BUTTON */}
         <button
-          className="lg:hidden col-span-2 justify-self-end text-gray-700"
+          className="lg:hidden text-white ml-auto"
           onClick={() => setOpen(!open)}
         >
           {open ? <X size={26} /> : <Menu size={26} />}
@@ -81,11 +70,7 @@ const Navbar = () => {
               </a>
             ))}
 
-            <a
-              href="#contact"
-              onClick={() => setOpen(false)}
-              className="block hover:text-footer"
-            >
+            <a href="#contact" onClick={() => setOpen(false)} className="block hover:text-azureSoft">
               Contact
             </a>
 

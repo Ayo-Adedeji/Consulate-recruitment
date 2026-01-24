@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Star } from "lucide-react";
 
 const reviews = [
@@ -24,6 +24,8 @@ const reviews = [
 
 export default function Reviews() {
   const [current, setCurrent] = useState(0);
+  const sectionRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -33,32 +35,58 @@ export default function Reviews() {
     return () => clearInterval(interval);
   }, []);
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsVisible(entry.isIntersecting),
+      { threshold: 0.25 }
+    );
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, []);
+
   const review = reviews[current];
+  const cardAnimation = isVisible
+    ? "opacity-100 translate-x-0"
+    : current % 2 === 0
+    ? "opacity-0 -translate-x-12"
+    : "opacity-0 translate-x-12";
 
   return (
-    <section className="relative overflow-hidden py-20 md:py-28 bg-gradient-to-br from-slate-50 via-white to-slate-100">
-      
+    <section
+      ref={sectionRef}
+      className="relative overflow-hidden py-20 md:py-28 bg-gradient-to-br from-slate-50 via-white to-slate-100"
+    >
       {/* Background blobs */}
       <div className="absolute -top-40 -left-40 w-[28rem] h-[28rem] bg-indigo-300/30 rounded-full blur-3xl"></div>
       <div className="absolute -bottom-40 -right-40 w-[28rem] h-[28rem] bg-purple-300/30 rounded-full blur-3xl"></div>
 
       <div className="relative max-w-7xl mx-auto px-5 md:px-8">
-        
         {/* Header */}
         <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            What they say about us
+          <h2
+            className={`
+              text-3xl text-azure md:text-4xl font-bold mb-4
+              transition-all duration-1000 delay-[200ms]
+              ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}
+            `}
+          >
+            What they say about us...
           </h2>
 
           {/* Clickable dots */}
-          <div className="flex justify-center gap-2">
+          <div
+            className={`
+              flex justify-center gap-2 transition-all duration-1000 delay-[400ms]
+              ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}
+            `}
+          >
             {reviews.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrent(index)}
                 className={`w-3 h-3 rounded-full transition-all duration-300 ${
                   index === current
-                    ? "bg-indigo-600 scale-125"
+                    ? "bg-muted scale-125"
                     : "bg-gray-300 hover:bg-gray-400"
                 }`}
               />
@@ -67,11 +95,15 @@ export default function Reviews() {
         </div>
 
         {/* Review card */}
-        <div className="max-w-5xl mx-auto">
-          <div className="relative bg-white/60 backdrop-blur-xl border border-white/30 rounded-3xl shadow-2xl p-6 sm:p-8 md:p-10 transition-all duration-500">
-            
+        <div
+          className={`
+            max-w-5xl mx-auto
+            transition-all duration-1000 delay-[600ms]
+            ${cardAnimation}
+          `}
+        >
+          <div className="relative bg-white/60 backdrop-blur-xl border border-white/30 rounded-3xl shadow-2xl p-6 sm:p-8 md:p-10">
             <div className="flex flex-col md:flex-row gap-6 md:gap-10 items-center md:items-start">
-              
               {/* Avatar */}
               <img
                 src={review.image}
@@ -81,7 +113,6 @@ export default function Reviews() {
 
               {/* Content */}
               <div className="text-center md:text-left">
-                
                 {/* Stars */}
                 <div className="flex justify-center md:justify-start mb-4">
                   {[...Array(5)].map((_, i) => (
@@ -93,16 +124,27 @@ export default function Reviews() {
                 </div>
 
                 {/* Quote */}
-                <p className="text-base sm:text-lg md:text-xl italic text-gray-700 leading-relaxed">
+                <p
+                  className={`
+                    text-base sm:text-lg md:text-xl italic text-gray-700 leading-relaxed
+                    transition-all duration-1000 delay-[800ms]
+                    ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}
+                  `}
+                >
                   “{review.text}”
                 </p>
 
                 {/* Name */}
-                <div className="mt-6">
-                  <p className="font-semibold text-lg">
+                <div
+                  className={`
+                    mt-6 transition-all duration-1000 delay-[1000ms]
+                    ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}
+                  `}
+                >
+                  <p className="font-semibold text-azureSoft text-lg">
                     {review.name}
                   </p>
-                  <p className="text-gray-500 text-sm">
+                  <p className="text-azureSoft text-sm">
                     {review.role}
                   </p>
                 </div>

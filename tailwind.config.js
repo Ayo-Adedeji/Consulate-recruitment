@@ -44,7 +44,7 @@ export default {
         primaryLight: "#2F5D8A",
         accent: "#F59E0B",
         azure: "#007FFF",
-        azureSoft: "#E0F4FF",
+        azureSoft: "#1E88E5",
 
         /* Backgrounds */
         bg: "#F8FAFC",

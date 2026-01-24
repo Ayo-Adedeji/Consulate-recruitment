@@ -85,7 +85,7 @@ const Recruitment = () => {
 
                 {/* Title */}
                 <h3
-                  className={`text-xl text-azureSoft font-semibold mt-2 transition-all duration-1000 ${
+                  className={`text-xl text-center text-azureSoft font-semibold mt-2 transition-all duration-1000 ${
                     isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
                   }`}
                   style={{ transitionDelay: `${index * 300 + 200}ms` }}
@@ -95,7 +95,7 @@ const Recruitment = () => {
 
                 {/* Text */}
                 <p
-                  className={`text-gray-700 text-sm md:text-base mt-2 flex-grow transition-all duration-1000 ${
+                  className={`text-gray-700 text-center text-sm md:text-base mt-2 flex-grow transition-all duration-1000 ${
                     isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
                   }`}
                   style={{ transitionDelay: `${index * 300 + 300}ms` }}

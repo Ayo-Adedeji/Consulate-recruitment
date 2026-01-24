@@ -16,7 +16,7 @@ const Process = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="bg-section py-24">
+    <section ref={sectionRef} className="bg-body py-24">
       <div className="max-w-7xl mx-auto px-6">
 
         {/* Section Header */}
@@ -33,7 +33,7 @@ const Process = () => {
 
           <p
             className={`
-              mt-4 text-muted max-w-2xl mx-auto
+              mt-4 text-primary max-w-2xl mx-auto
               transition-all duration-1000 delay-[400ms]
               ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}
             `}
@@ -49,7 +49,7 @@ const Process = () => {
           {/* Card 1 */}
           <div
             className={`
-              bg-card rounded-2xl shadow-card p-8 text-center hover:shadow-soft transition
+              bg-card rounded-2xl shadow-md p-8 text-center hover:shadow-lg transition
               transition-all duration-1000 delay-[600ms]
               ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}
             `}
@@ -76,7 +76,7 @@ const Process = () => {
 
             <p
               className={`
-                text-body
+                text-primary
                 transition-all duration-1000 delay-[900ms]
                 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}
               `}
@@ -89,7 +89,7 @@ const Process = () => {
           {/* Card 2 */}
           <div
             className={`
-              bg-card rounded-2xl shadow-card p-8 text-center hover:shadow-soft transition
+              bg-card rounded-2xl shadow-md p-8 text-center hover:shadow-lg transition
               transition-all duration-1000 delay-[800ms]
               ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}
             `}
@@ -116,7 +116,7 @@ const Process = () => {
 
             <p
               className={`
-                text-body mb-2
+                text-primary mb-2
                 transition-all duration-1000 delay-[1100ms]
                 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}
               `}
@@ -126,7 +126,7 @@ const Process = () => {
 
             <p
               className={`
-                text-body
+                text-primary
                 transition-all duration-1000 delay-[1200ms]
                 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}
               `}
@@ -138,7 +138,7 @@ const Process = () => {
           {/* Card 3 */}
           <div
             className={`
-              bg-card rounded-2xl shadow-card p-8 text-center hover:shadow-soft transition
+              bg-card rounded-2xl shadow-md p-8 text-center hover:shadow-lg transition
               transition-all duration-1000 delay-[1000ms]
               ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}
             `}
@@ -165,7 +165,7 @@ const Process = () => {
 
             <p
               className={`
-                text-body mb-2
+                text-primary mb-2
                 transition-all duration-1000 delay-[1300ms]
                 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}
               `}
@@ -175,7 +175,7 @@ const Process = () => {
 
             <p
               className={`
-                text-body
+                text-primary
                 transition-all duration-1000 delay-[1400ms]
                 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}
               `}

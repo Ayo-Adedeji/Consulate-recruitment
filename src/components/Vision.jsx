@@ -29,12 +29,12 @@ const Vision = () => {
       {/* Decorative blobs */}
       <FaCircle
         className={`absolute top-0 left-0 w-40 h-40 text-blue-200 opacity-20 transition-all duration-1000 ${
-          isVisible ? "translate-x-0 translate-y-0 opacity-100" : "-translate-x-20 -translate-y-20 opacity-0"
+          isVisible ? "translate-x-0 translate-y-0 opacity-100" : "-translate-x-10 -translate-y-10 opacity-0"
         }`}
       />
       <FaCircle
         className={`absolute bottom-0 right-0 w-60 h-60 text-blue-300 opacity-20 transition-all duration-1000 ${
-          isVisible ? "translate-x-0 translate-y-0 opacity-100" : "translate-x-20 translate-y-20 opacity-0"
+          isVisible ? "translate-x-0 translate-y-0 opacity-100" : "translate-x-10 translate-y-10 opacity-0"
         }`}
       />
 
@@ -43,7 +43,7 @@ const Vision = () => {
         {/* Image Left */}
         <div
           className={`w-full md:w-1/2 transition-all duration-1000 ${
-            isVisible ? "translate-x-0 opacity-100" : "-translate-x-20 opacity-0"
+            isVisible ? "translate-x-0 opacity-100" : "-translate-x-6 opacity-0"
           }`}
         >
           <div className="rounded-lg overflow-hidden shadow-lg">
@@ -78,13 +78,15 @@ const Vision = () => {
           </p>
 
           {/* Button */}
-          <button
-            className={`bg-azureSoft text-white font-semibold px-6 py-3 rounded-lg w-max hover:bg-primary transition-all duration-1000 delay-300 ${
-              isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
-            }`}
-          >
-            FIND OUT MORE
-          </button>
+          <div className="flex justify-center md:justify-start">
+            <button
+              className={`bg-azureSoft text-white font-semibold px-6 py-3 rounded-lg hover:bg-primary transition-all duration-1000 delay-300 ${
+                isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+              }`}
+            >
+              FIND OUT MORE
+            </button>
+          </div>
         </div>
       </div>
     </section>

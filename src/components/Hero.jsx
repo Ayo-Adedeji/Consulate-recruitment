@@ -17,15 +17,13 @@ const Hero = () => {
 
   return (
     <section
-  className="relative h-screen w-full flex items-center justify-center text-center overflow-hidden pt-24"
-  style={{
-    backgroundImage: `url(${backgrounds[current]})`,
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-    backgroundRepeat: "no-repeat",
-    transition: "background-image 1s ease-in-out",
-  }}
->
+      className="relative h-screen w-full flex items-center justify-center text-center overflow-hidden bg-cover bg-no-repeat pt-56"
+      style={{
+        backgroundImage: `url(${backgrounds[current]})`,
+        backgroundPosition: "center 10%", // Show even more of the top part
+        transition: "background-image 1s ease-in-out",
+      }}
+    >
   {/* Overlay */}
   <div className="absolute inset-0 bg-black/40"></div>
 

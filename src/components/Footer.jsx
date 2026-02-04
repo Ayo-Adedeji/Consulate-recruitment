@@ -48,9 +48,30 @@ export default function Footer() {
       {/* Bottom Row */}
       <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center py-6 gap-4">
         
-        <p className="text-white text-sm">
-         Copyright &copy; 2025 Consulate Recruitment Agency, All rights reserved.
-        </p>
+        <div className="flex flex-col md:flex-row items-center gap-4 text-sm">
+          <p className="text-white">
+           Copyright &copy; 2025 Consulate Recruitment Agency, All rights reserved.
+          </p>
+          <div className="flex gap-4">
+            <a 
+              href="/terms-and-conditions.pdf" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-white hover:text-accent transition underline"
+            >
+              Terms & Conditions
+            </a>
+            <a 
+              href="/privacy-policy.pdf" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-white hover:text-accent transition underline"
+            >
+              Privacy Policy
+            </a>
+          </div>
+        </div>
+        
         <p className="text-white text-sm">
           Business Registration Number: 16096801 
         </p>

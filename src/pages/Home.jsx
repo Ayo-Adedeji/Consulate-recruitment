@@ -14,6 +14,7 @@ import Navbar from '../components/Navbar'
 import Consultation from '../components/Consultation'
 import Clients from '../components/Clients'
 import Marquee from '../components/Marquee'
+import RecentBlogs from '../components/RecentBlogs'
 
 const Home = () => {
   return (
@@ -29,6 +30,7 @@ const Home = () => {
         <Consultation/>
         <Approach/>
         <Jobs/>
+        <RecentBlogs/>
         <Youtube/>
         <Reviews/>
         <Process/>

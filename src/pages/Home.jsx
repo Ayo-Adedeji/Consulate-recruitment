@@ -7,7 +7,7 @@ import Youtube from '../components/Youtube'
 import Approach from '../components/Approach'
 import Recruitment from '../components/Recruitment'
 import Vision from '../components/Vision'
-import HeroCards from '../components/heroCards'
+import Herocards from '../components/HeroCards'
 import Hero from '../components/Hero'
 import Jobs from '../components/Jobs'
 import Navbar from '../components/Navbar'
@@ -23,7 +23,7 @@ const Home = () => {
         <Navbar/>
         <Hero/>
         <Marquee/>
-        <HeroCards/>
+        <Herocards/>
         <Vision/>
         <Clients/>
         <Recruitment/>

@@ -1,5 +1,6 @@
 import { FaFacebookF, FaInstagram, FaLinkedinIn, FaPhone, FaPhoneSquare, FaTwitter, FaVoicemail } from "react-icons/fa";
 import { FaMessage, FaPhoneVolume } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 import consulateLogo from "../assets/consulateLogo.png";
 
 export default function Footer() {
@@ -53,22 +54,18 @@ export default function Footer() {
            Copyright &copy; 2025 Consulate Recruitment Agency, All rights reserved.
           </p>
           <div className="flex gap-4">
-            <a 
-              href="/terms-and-conditions.pdf" 
-              target="_blank" 
-              rel="noopener noreferrer"
+            <Link 
+              to="/terms" 
               className="text-white hover:text-accent transition underline"
             >
               Terms & Conditions
-            </a>
-            <a 
-              href="/privacy-policy.pdf" 
-              target="_blank" 
-              rel="noopener noreferrer"
+            </Link>
+            <Link 
+              to="/privacy" 
               className="text-white hover:text-accent transition underline"
             >
               Privacy Policy
-            </a>
+            </Link>
           </div>
         </div>
         

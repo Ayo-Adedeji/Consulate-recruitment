@@ -15,6 +15,7 @@ import Consultation from '../components/Consultation'
 import Clients from '../components/Clients'
 import Marquee from '../components/Marquee'
 import RecentBlogs from '../components/RecentBlogs'
+import FloatingButtons from '../components/FloatingButtons'
 
 const Home = () => {
   return (
@@ -36,6 +37,9 @@ const Home = () => {
         <Process/>
         <IcoImage/>
         <Footer/>
+        
+        {/* Floating Buttons */}
+        <FloatingButtons/>
     </div>
   )
 }

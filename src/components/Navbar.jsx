@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { Menu, X, ChevronDown } from "lucide-react";
 import consulateLogo from "../assets/consulateLogo.png";
 
@@ -66,7 +67,9 @@ const Navbar = () => {
         
         {/* LEFT — LOGO */}
         <div className="flex-shrink-0">
-          <img src={consulateLogo} alt="Consulate Recruitment" className="h-20" />
+          <Link to="/" className="block">
+            <img src={consulateLogo} alt="Consulate Recruitment" className="h-20 hover:opacity-90 transition-opacity" />
+          </Link>
         </div>
 
         {/* CENTER — NAV LINKS */}

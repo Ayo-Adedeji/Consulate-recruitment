@@ -280,6 +280,9 @@ const ServicesManager: React.FC = () => {
         });
       }
 
+      // Dispatch custom event to update dashboard stats
+      window.dispatchEvent(new CustomEvent('cms-data-updated'));
+
       setIsFormOpen(false);
       setEditingService(null);
       await loadServices();
@@ -310,6 +313,10 @@ const ServicesManager: React.FC = () => {
         title: 'Success',
         message: 'Service deleted successfully!',
       });
+      
+      // Dispatch custom event to update dashboard stats
+      window.dispatchEvent(new CustomEvent('cms-data-updated'));
+      
       setDeleteConfirm({ isOpen: false, service: null });
       await loadServices();
     } catch (error) {

@@ -386,6 +386,9 @@ const BlogManager: React.FC = () => {
         });
       }
 
+      // Dispatch custom event to update dashboard stats
+      window.dispatchEvent(new CustomEvent('cms-data-updated'));
+
       setIsFormOpen(false);
       setEditingPost(null);
       await loadPosts();
@@ -416,6 +419,10 @@ const BlogManager: React.FC = () => {
         title: 'Success',
         message: 'Blog post deleted successfully!',
       });
+      
+      // Dispatch custom event to update dashboard stats
+      window.dispatchEvent(new CustomEvent('cms-data-updated'));
+      
       setDeleteConfirm({ isOpen: false, post: null });
       await loadPosts();
     } catch (error) {

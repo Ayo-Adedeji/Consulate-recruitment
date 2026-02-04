@@ -78,12 +78,6 @@ export const dashboardRoutes: NavigationItem[] = [
     permission: 'write',
   },
   {
-    key: 'analytics',
-    label: 'Analytics',
-    icon: BarChart3,
-    path: '/dashboard/analytics',
-  },
-  {
     key: 'export-import',
     label: 'Export/Import',
     icon: Download,

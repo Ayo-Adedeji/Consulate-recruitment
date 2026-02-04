@@ -349,6 +349,9 @@ const JobsManager: React.FC = () => {
         });
       }
 
+      // Dispatch custom event to update dashboard stats
+      window.dispatchEvent(new CustomEvent('cms-data-updated'));
+
       setIsFormOpen(false);
       setEditingJob(null);
       await loadJobs();
@@ -379,6 +382,10 @@ const JobsManager: React.FC = () => {
         title: 'Success',
         message: 'Job listing deleted successfully!',
       });
+      
+      // Dispatch custom event to update dashboard stats
+      window.dispatchEvent(new CustomEvent('cms-data-updated'));
+      
       setDeleteConfirm({ isOpen: false, job: null });
       await loadJobs();
     } catch (error) {

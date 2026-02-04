@@ -437,6 +437,9 @@ const TestimonialsManager: React.FC = () => {
         });
       }
 
+      // Dispatch custom event to update dashboard stats
+      window.dispatchEvent(new CustomEvent('cms-data-updated'));
+
       setIsFormOpen(false);
       setEditingTestimonial(null);
       setFormRating(5);
@@ -471,6 +474,10 @@ const TestimonialsManager: React.FC = () => {
         title: 'Success',
         message: 'Testimonial deleted successfully!',
       });
+      
+      // Dispatch custom event to update dashboard stats
+      window.dispatchEvent(new CustomEvent('cms-data-updated'));
+      
       setDeleteConfirm({ isOpen: false, testimonial: null });
       await loadTestimonials();
     } catch (error) {

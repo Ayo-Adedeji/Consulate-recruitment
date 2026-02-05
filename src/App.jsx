@@ -7,6 +7,8 @@ import JobsList from "./components/JobsList";
 import JobDetail from "./components/JobDetail";
 import TermsConditions from "./components/TermsConditions";
 import PrivacyPolicy from "./components/PrivacyPolicy";
+import Timesheet from "./components/Timesheet";
+import Contact from "./components/Contact";
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
         <Route path="/jobs/:id" element={<JobDetail />} />
         <Route path="/terms" element={<TermsConditions />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />
+        <Route path="/timesheets" element={<Timesheet />} />
+        <Route path="/contact" element={<Contact />} />
         
         {/* Dashboard routes */}
         <Route path="/dashboard/*" element={<DashboardRoutes />} />

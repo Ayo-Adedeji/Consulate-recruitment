@@ -281,7 +281,7 @@ const JobDetail = () => {
                       </p>
                       <div className="bg-white p-4 rounded-lg border border-blue-200">
                         <p className="text-blue-900 font-medium">
-                          📧 <strong>Email:</strong> <span className="text-azure">careers@consulaterecruitment.com</span>
+                          📧 <strong>Email:</strong> <span className="text-azure">admin@consulaterecruitment.co.uk</span>
                         </p>
                         <p className="text-sm text-blue-700 mt-2">
                           Please include the job title "{job.title}" in your email subject line.

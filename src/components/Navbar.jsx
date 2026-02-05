@@ -118,7 +118,7 @@ const Navbar = () => {
 
         {/* RIGHT — ACTIONS */}
         <div className="hidden lg:flex items-center space-x-4">
-          <a href="#contact" className="text-sm font-medium text-white hover:text-footer">
+          <a href="/contact" className="text-sm font-medium text-white hover:text-footer">
             Contact
           </a>
 
@@ -180,7 +180,7 @@ const Navbar = () => {
               )}
             </div>
 
-            <a href="#contact" onClick={() => setOpen(false)} className="block hover:text-azureSoft">
+            <a href="/contact" onClick={() => setOpen(false)} className="block hover:text-azureSoft">
               Contact
             </a>
 

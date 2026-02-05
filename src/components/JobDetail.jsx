@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { 
   MapPin, 
@@ -14,6 +14,8 @@ import {
   Mail
 } from 'lucide-react';
 import { simpleCloudStorageManager } from '../dashboard/utils';
+import Navbar from './Navbar';
+import Footer from './Footer';
 
 const JobDetail = () => {
   const { id } = useParams();
@@ -21,6 +23,32 @@ const JobDetail = () => {
   const [loading, setLoading] = useState(true);
   const [showApplicationMessage, setShowApplicationMessage] = useState(false);
   const [relatedJobs, setRelatedJobs] = useState([]);
+
+  // Add CSS for animations
+  useEffect(() => {
+    const style = document.createElement('style');
+    style.textContent = `
+      .animate-fade-in {
+        animation: fadeIn 0.5s ease-in-out;
+      }
+      
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    `;
+    document.head.appendChild(style);
+    
+    return () => {
+      document.head.removeChild(style);
+    };
+  }, []);
 
   useEffect(() => {
     if (id) {
@@ -136,8 +164,9 @@ const JobDetail = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <Navbar />
       {/* Header */}
-      <div className="bg-white shadow-sm">
+      <div className="bg-white shadow-sm pt-24">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <Link
             to="/jobs"
@@ -373,6 +402,8 @@ const JobDetail = () => {
           </Link>
         </div>
       </div>
+
+      <Footer />
     </div>
   );
 };

@@ -9,6 +9,10 @@ import TermsConditions from "./components/TermsConditions";
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import Timesheet from "./components/Timesheet";
 import Contact from "./components/Contact";
+import Candidates from "./components/Candidates";
+import ClientsPage from "./components/ClientsPage";
+import AboutPage from "./components/AboutPage";
+import ConsultationsPage from "./components/ConsultationsPage";
 
 function App() {
   return (
@@ -24,6 +28,10 @@ function App() {
         <Route path="/privacy" element={<PrivacyPolicy />} />
         <Route path="/timesheets" element={<Timesheet />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/candidates" element={<Candidates />} />
+        <Route path="/clients" element={<ClientsPage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/consultations" element={<ConsultationsPage />} />
         
         {/* Dashboard routes */}
         <Route path="/dashboard/*" element={<DashboardRoutes />} />

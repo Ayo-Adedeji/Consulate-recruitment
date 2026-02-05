@@ -1,15 +1,32 @@
-const Marquee = () => {
-  const text = "Jobs • Temporary & Permanent Roles • Trusted Career Support • Apply Today • ";
-  
-  // Create one long continuous string with proper spacing
-  const continuousText = Array.from({ length: 15 }, () => text).join("");
+import React from 'react';
 
+const Marquee = () => {
   return (
-    <div className="w-full overflow-hidden bg-primary text-white">
-      {/* Single continuous text string to avoid overlapping */}
-      <div className="flex w-max h-16 items-center animate-marqueeMedium hover:[animation-play-state:paused] text-sm sm:text-base lg:text-lg font-medium">
-        <span className="whitespace-nowrap">{continuousText}</span>
+    <div className="w-full overflow-hidden bg-primary text-white h-16 flex items-center">
+      <div className="animate-scroll whitespace-nowrap text-sm sm:text-base lg:text-lg font-medium">
+        Welcome to Consulate Recruitment Agency — your reliable staffing solutions, cleaning services and management consulting. Apply for jobs, get blog insight update and lots more. Call us today on 07786043535
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        Welcome to Consulate Recruitment Agency — your reliable staffing solutions, cleaning services and management consulting. Apply for jobs, get blog insight update and lots more. Call us today on 07786043535
       </div>
+      
+      <style jsx>{`
+        .animate-scroll {
+          animation: scroll 20s linear infinite;
+        }
+        
+        .animate-scroll:hover {
+          animation-play-state: paused;
+        }
+        
+        @keyframes scroll {
+          from {
+            transform: translateX(100%);
+          }
+          to {
+            transform: translateX(-100%);
+          }
+        }
+      `}</style>
     </div>
   );
 };

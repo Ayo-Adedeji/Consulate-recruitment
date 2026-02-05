@@ -63,3 +63,32 @@ html, body {
   min-width: 0;
   overflow-wrap: break-word;
 }
+
+/* Ensure containers don't overflow */
+.container, .max-w-7xl, .max-w-6xl, .max-w-5xl, .max-w-4xl, .max-w-3xl, .max-w-2xl, .max-w-xl {
+  max-width: calc(100vw - 2rem);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Fix for animations that might cause horizontal scroll */
+@media (max-width: 768px) {
+  .transition-all, .transition-transform {
+    transform: none !important;
+  }
+  
+  /* Disable horizontal animations on mobile */
+  [class*="translate-x"] {
+    transform: translateX(0) !important;
+  }
+}
+
+/* Ensure grid and flex containers don't overflow */
+.grid, .flex {
+  min-width: 0;
+}
+
+.grid > *, .flex > * {
+  min-width: 0;
+  overflow-wrap: break-word;
+}

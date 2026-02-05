@@ -51,6 +51,7 @@ export default {
         marqueeSlow: 'marquee 35s linear infinite',
         marqueeMedium: 'marquee 28s linear infinite',
         marqueeFast: 'marquee 22s linear infinite',
+        marqueeSuper: 'marquee 12s linear infinite',
         float: 'float 6s ease-in-out infinite',
         'float-delayed': 'float-delayed 6s ease-in-out infinite 2s',
       },

@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { FaUserGraduate, FaFileAlt, FaPalette, FaUsers, FaGraduationCap, FaBriefcase, FaCalendarAlt, FaArrowRight, FaCheckCircle } from "react-icons/fa";
 
 const Consultation = () => {
   const sectionRef = useRef(null);
@@ -16,46 +17,194 @@ const Consultation = () => {
     return () => observer.disconnect();
   }, []);
 
+  const services = [
+    {
+      icon: <FaFileAlt className="w-6 h-6" />,
+      title: "CV Restructuring & Optimization",
+      description: "Professional CV enhancement to make you stand out"
+    },
+    {
+      icon: <FaPalette className="w-6 h-6" />,
+      title: "Graphic Design Services",
+      description: "Creative design solutions for your professional needs"
+    },
+    {
+      icon: <FaUsers className="w-6 h-6" />,
+      title: "Interview Coaching",
+      description: "Comprehensive preparation for successful interviews"
+    },
+    {
+      icon: <FaGraduationCap className="w-6 h-6" />,
+      title: "UK University Applications",
+      description: "Expert guidance through university application process"
+    },
+    {
+      icon: <FaUserGraduate className="w-6 h-6" />,
+      title: "CPD-Certified Training",
+      description: "Online care training with professional certification"
+    },
+    {
+      icon: <FaBriefcase className="w-6 h-6" />,
+      title: "Business Setup Support",
+      description: "Complete assistance for starting your business"
+    }
+  ];
+
   return (
-    <section ref={sectionRef} className="py-20 bg-azureSoft overflow-hidden">
-      <div className="max-w-4xl mx-auto px-5 text-center flex flex-col items-center">
-        
-        {/* Heading — LEFT */}
-        <h2
-          className={`text-3xl md:text-4xl font-bold text-white mb-6 transition-all duration-1000 delay-200
-            ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-12"}
-          `}
-        >
-          Our Consultation Services
-        </h2>
+    <section ref={sectionRef} className="relative py-20 md:py-28 bg-gradient-to-br from-azure via-azureSoft to-primary overflow-hidden">
+      {/* Background decorative elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className={`absolute -top-20 -left-20 w-40 h-40 bg-white/10 rounded-full blur-2xl transition-all duration-1000 ${
+          isVisible ? "scale-100 opacity-100" : "scale-50 opacity-0"
+        }`}></div>
+        <div className={`absolute -bottom-20 -right-20 w-60 h-60 bg-white/10 rounded-full blur-2xl transition-all duration-1000 delay-300 ${
+          isVisible ? "scale-100 opacity-100" : "scale-50 opacity-0"
+        }`}></div>
+        <div className={`absolute top-1/2 left-1/4 w-32 h-32 bg-white/5 rounded-full blur-3xl transition-all duration-1000 delay-500 ${
+          isVisible ? "scale-100 opacity-100" : "scale-75 opacity-0"
+        }`}></div>
+      </div>
 
-        {/* Text — RIGHT */}
-        <p
-          className={`text-white text-base md:text-lg leading-relaxed mb-8 transition-all duration-1000 delay-400
-            ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-12"}
-          `}
-        >
-          Our consultation services are designed to provide support with CV restructuring and 
-          optimisation, graphic design, interview coaching and preparation, UK university 
-          application support, CPD-certified online care training and business set up. 
-          Whether you are a newcomer to the UK, an international student, support worker, 
-          or a job seeker in general, we understand that navigating each of these areas can 
-          feel overwhelming. With many years of experience in helping people adapt and succeed, 
-          our dedicated team is committed to making your journey as smooth and effective as 
-          possible. We assist you at every step from handling paperwork and applications to 
-          building essential skills and earning certifications so you can focus on achieving your goals.
-        </p>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Section Header */}
+        <div className="text-center mb-16">
+          <div
+            className={`inline-flex items-center gap-2 bg-white/20 text-white px-4 py-2 rounded-full text-sm font-medium mb-6 backdrop-blur-sm transition-all duration-1000 ${
+              isVisible ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
+            }`}
+          >
+            <FaUserGraduate className="w-4 h-4" />
+            Professional Consultation
+          </div>
+          
+          <h2
+            className={`text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 transition-all duration-1000 delay-100 ${
+              isVisible ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
+            }`}
+          >
+            Expert <span className="text-yellow-300">Consultation</span> Services
+          </h2>
+          
+          <p
+            className={`text-xl text-white/90 max-w-3xl mx-auto leading-relaxed transition-all duration-1000 delay-200 ${
+              isVisible ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
+            }`}
+          >
+            Comprehensive support designed to help you navigate your professional journey with confidence
+          </p>
+        </div>
 
-        {/* Button — LEFT */}
-        <a
-          href="#book-appointment"
-          className={`bg-primary text-white font-semibold px-8 py-3 rounded-lg hover:bg-muted transition-all duration-1000 delay-600
-            ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-12"}
-          `}
-        >
-          Book an Appointment
-        </a>
+        {/* Services Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+          {services.map((service, index) => (
+            <div
+              key={index}
+              className={`group bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/20 transition-all duration-500 border border-white/20 hover:border-white/30 ${
+                isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+              }`}
+              style={{ transitionDelay: `${300 + index * 100}ms` }}
+            >
+              {/* Icon */}
+              <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center text-white mb-4 group-hover:bg-white/30 group-hover:scale-110 transition-all duration-300">
+                {service.icon}
+              </div>
+              
+              {/* Content */}
+              <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-yellow-300 transition-colors duration-300">
+                {service.title}
+              </h3>
+              <p className="text-white/80 text-sm leading-relaxed">
+                {service.description}
+              </p>
+            </div>
+          ))}
+        </div>
 
+        {/* Main Content */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
+          {/* Left Column - Key Benefits */}
+          <div
+            className={`transition-all duration-1000 delay-700 ${
+              isVisible ? "translate-x-0 opacity-100" : "-translate-x-8 opacity-0"
+            }`}
+          >
+            <h3 className="text-2xl md:text-3xl font-bold text-white mb-6">
+              Why Choose Our Consultation Services?
+            </h3>
+            
+            <div className="space-y-4">
+              {[
+                "Experienced professionals with years of UK market knowledge",
+                "Personalized approach tailored to your specific needs",
+                "Comprehensive support from application to certification",
+                "Proven track record of successful outcomes"
+              ].map((benefit, index) => (
+                <div
+                  key={index}
+                  className={`flex items-start gap-3 transition-all duration-1000 ${
+                    isVisible ? "translate-x-0 opacity-100" : "translate-x-4 opacity-0"
+                  }`}
+                  style={{ transitionDelay: `${800 + index * 100}ms` }}
+                >
+                  <FaCheckCircle className="w-5 h-5 text-yellow-300 mt-1 flex-shrink-0" />
+                  <span className="text-white/90 leading-relaxed">{benefit}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Right Column - Description */}
+          <div
+            className={`transition-all duration-1000 delay-900 ${
+              isVisible ? "translate-x-0 opacity-100" : "translate-x-8 opacity-0"
+            }`}
+          >
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
+              <h3 className="text-xl font-semibold text-white mb-4">
+                Comprehensive Support for Your Success
+              </h3>
+              <p className="text-white/90 leading-relaxed mb-6">
+                Whether you are a newcomer to the UK, an international student, support worker, 
+                or a job seeker in general, we understand that navigating professional development 
+                can feel overwhelming. With many years of experience in helping people adapt and succeed, 
+                our dedicated team is committed to making your journey as smooth and effective as possible.
+              </p>
+              <p className="text-white/90 leading-relaxed">
+                We assist you at every step from handling paperwork and applications to 
+                building essential skills and earning certifications so you can focus on achieving your goals.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Call to Action */}
+        <div className="text-center">
+          <div
+            className={`transition-all duration-1000 delay-1000 ${
+              isVisible ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
+            }`}
+          >
+            <p className="text-white/90 mb-6 text-lg">
+              Ready to take the next step in your professional journey?
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <a
+                href="/consultations"
+                className="inline-flex items-center gap-2 bg-white text-azure font-semibold px-8 py-4 rounded-xl hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+              >
+                <FaCalendarAlt className="w-5 h-5" />
+                Book an Appointment
+                <FaArrowRight className="w-4 h-4" />
+              </a>
+              <a
+                href="/contact"
+                className="inline-flex items-center gap-2 bg-transparent border-2 border-white text-white font-semibold px-8 py-4 rounded-xl hover:bg-white hover:text-azure transition-all duration-300"
+              >
+                Learn More
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

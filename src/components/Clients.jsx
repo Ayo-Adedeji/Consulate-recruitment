@@ -11,6 +11,7 @@ const Clients = () => {
   });
   
   const sectionRef = useRef(null);
+  const statsGridRef = useRef(null);
   const hasAnimated = useRef(false);
 
   const targetStats = {
@@ -52,21 +53,36 @@ const Clients = () => {
   };
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
+    const sectionObserver = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    const statsObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
           animateStats();
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0.5 }
     );
 
     if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+      sectionObserver.observe(sectionRef.current);
     }
 
-    return () => observer.disconnect();
+    if (statsGridRef.current) {
+      statsObserver.observe(statsGridRef.current);
+    }
+
+    return () => {
+      sectionObserver.disconnect();
+      statsObserver.disconnect();
+    };
   }, []);
 
   const statsData = [
@@ -149,7 +165,7 @@ const Clients = () => {
         </div>
 
         {/* Stats grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div ref={statsGridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {statsData.map((stat, index) => (
             <div
               key={index}

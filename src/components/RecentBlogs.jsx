@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Calendar, User, ArrowRight, Tag } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { storageManager } from '../dashboard/utils/storage';
+import { simpleCloudStorageManager } from '../dashboard/utils';
 
 const RecentBlogs = () => {
   const [recentPosts, setRecentPosts] = useState([]);
@@ -14,7 +14,7 @@ const RecentBlogs = () => {
   const loadRecentPosts = async () => {
     try {
       // Get published blog posts only
-      const allPosts = await storageManager.list('blog');
+      const allPosts = await simpleCloudStorageManager.list('blog');
       const publishedPosts = allPosts
         .filter(post => post.status === 'published')
         .sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt))

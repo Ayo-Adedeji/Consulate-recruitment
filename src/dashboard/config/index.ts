@@ -1,4 +1,6 @@
 // Dashboard configuration
+import { cloudConfig } from './cloud';
+
 export const dashboardConfig = {
   app: {
     name: 'Consulate Recruitment Dashboard',
@@ -13,6 +15,7 @@ export const dashboardConfig = {
   
   storage: {
     useLocalStorage: true,
+    useCloudStorage: false, // Will be enabled after cloud setup
     useJsonFiles: false, // For future implementation
     maxStorageSize: 50 * 1024 * 1024, // 50MB
     compressionEnabled: true,
@@ -48,3 +51,7 @@ export const dashboardConfig = {
 } as const;
 
 export type DashboardConfig = typeof dashboardConfig;
+
+// Export cloud configuration
+export { cloudConfig, CloudConfigService } from './cloud';
+export type { CloudConfig, CloudConnectionStatus } from './cloud';

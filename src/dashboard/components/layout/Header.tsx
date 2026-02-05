@@ -1,7 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
-import { LogOut, User, Menu, Home } from 'lucide-react';
+import { LogOut, User, Menu, Home, RefreshCw } from 'lucide-react';
 import Breadcrumbs from './Breadcrumbs';
 
 interface HeaderProps {
@@ -26,14 +25,26 @@ const Header: React.FC<HeaderProps> = ({ onMenuToggle }) => {
           </button>
           
           {/* Logo/Home link */}
-          <Link
-            to="/"
+          <a
+            href="/"
             className="flex items-center space-x-2 px-2 sm:px-3 py-2 rounded-md text-azure hover:text-azureSoft hover:bg-blue-50 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
             title="Go to Homepage"
           >
             <Home className="h-4 w-4 sm:h-5 sm:w-5" />
             <span className="hidden sm:inline text-sm font-medium">Homepage</span>
-          </Link>
+          </a>
+          
+          {/* Refresh button */}
+          <button
+            onClick={() => window.location.reload()}
+            className="flex items-center space-x-2 px-2 sm:px-3 py-2 rounded-md text-green-600 hover:text-green-700 hover:bg-green-50 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-green-500"
+            title="Refresh Page (Force reload from database)"
+          >
+            <RefreshCw className="h-4 w-4 sm:h-5 sm:w-5" />
+            <span className="hidden sm:inline text-sm font-medium">Refresh</span>
+          </button>
+          
+          {/* Clear localStorage button - REMOVED: Using cloud-only storage now */}
           
           {/* Welcome message */}
           <div className="min-w-0 flex-1">

@@ -717,3 +717,6 @@ export class StorageManagerImpl implements StorageManager {
 
 // Create and export a default instance
 export const storageManager = new StorageManagerImpl();
+
+// Export cloud storage components
+export { CloudStorageManager, cloudStorageManager } from './cloudStorage';

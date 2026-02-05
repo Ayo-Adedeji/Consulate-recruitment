@@ -5,7 +5,7 @@ import { DataTable, FormBuilder, ConfirmDialog, LoadingSpinner } from '../ui';
 import { useToast } from '../ui/Toast';
 import { BlogPost } from '../../types/content';
 import { TableColumn, FormField } from '../../types/ui';
-import { storageManager } from '../../utils/storage';
+import { simpleCloudStorageManager } from '../../utils';
 
 const BlogManager: React.FC = () => {
   const [posts, setPosts] = useState<BlogPost[]>([]);
@@ -31,7 +31,7 @@ const BlogManager: React.FC = () => {
   const loadPosts = useCallback(async () => {
     try {
       setLoading(true);
-      const postsData = await storageManager.list<BlogPost>('blog');
+      const postsData = await simpleCloudStorageManager.list<BlogPost>('blog');
       setPosts(postsData);
     } catch (error) {
       console.error('Failed to load blog posts:', error);
@@ -370,7 +370,7 @@ const BlogManager: React.FC = () => {
 
       if (editingPost) {
         // Update existing post
-        await storageManager.update<BlogPost>('blog', editingPost.id, postData);
+        await simpleCloudStorageManager.update<BlogPost>('blog', editingPost.id, postData);
         showToast({
           type: 'success',
           title: 'Success',
@@ -378,7 +378,7 @@ const BlogManager: React.FC = () => {
         });
       } else {
         // Create new post
-        await storageManager.create<BlogPost>('blog', postData);
+        await simpleCloudStorageManager.create<BlogPost>('blog', postData);
         showToast({
           type: 'success',
           title: 'Success',
@@ -413,7 +413,7 @@ const BlogManager: React.FC = () => {
     if (!deleteConfirm.post) return;
 
     try {
-      await storageManager.delete('blog', deleteConfirm.post.id);
+      await simpleCloudStorageManager.delete('blog', deleteConfirm.post.id);
       showToast({
         type: 'success',
         title: 'Success',

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug Jobs Homepage</title>
+</head>
+<body>
+    <h1>Debug Jobs Homepage Issue</h1>
+    <p>This is a test page to verify the jobs are loading on the homepage.</p>
+    
+    <h2>Steps to test:</h2>
+    <ol>
+        <li>Go to the homepage (localhost:5173)</li>
+        <li>Scroll down to the "Careers & Opportunities" section</li>
+        <li>Check if jobs are displayed below the hero section</li>
+        <li>Open browser console (F12) and check for any errors</li>
+    </ol>
+    
+    <h2>What was fixed:</h2>
+    <ul>
+        <li>Updated Jobs.jsx component to use simpleCloudStorageManager instead of old storageManager</li>
+        <li>This ensures jobs are loaded from the cloud database consistently</li>
+        <li>No more localStorage conflicts or hybrid storage issues</li>
+    </ul>
+    
+    <h2>Expected behavior:</h2>
+    <ul>
+        <li>If you have published jobs in the admin dashboard, they should appear on the homepage</li>
+        <li>The "Latest Job Opportunities" section should be visible</li>
+        <li>Each job should show title, location, description, and employment type</li>
+    </ul>
+    
+    <p><strong>Note:</strong> If no jobs appear, make sure you have created and published jobs in the admin dashboard first.</p>
+</body>
+</html>

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Navigate, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import { validateRequired } from '../../utils/validation';
 import { Eye, EyeOff, Lock, User } from 'lucide-react';
@@ -7,7 +6,6 @@ import consulateLogo from '../../../assets/consulateLogo.png';
 
 const LoginPage: React.FC = () => {
   const { login, isAuthenticated, userRole } = useAuth();
-  const navigate = useNavigate();
   const [credentials, setCredentials] = useState({ username: '', password: '' });
   const [error, setError] = useState('');
   const [fieldErrors, setFieldErrors] = useState<{ username?: string; password?: string }>({});
@@ -22,7 +20,8 @@ const LoginPage: React.FC = () => {
       editor: '/dashboard/content',
       viewer: '/dashboard/analytics'
     };
-    return <Navigate to={defaultRoutes[userRole] || '/dashboard'} replace />;
+    window.location.href = defaultRoutes[userRole] || '/dashboard';
+    return null;
   }
 
   const validateForm = (): boolean => {
@@ -53,8 +52,13 @@ const LoginPage: React.FC = () => {
     try {
       const success = await login(credentials);
       if (success) {
-        // Navigation will be handled by the redirect logic above
-        // since isAuthenticated will become true after successful login
+        // Redirect to dashboard after successful login
+        const defaultRoutes = {
+          admin: '/dashboard',
+          editor: '/dashboard/content', 
+          viewer: '/dashboard/analytics'
+        };
+        window.location.href = defaultRoutes[userRole] || '/dashboard';
       } else {
         setError('Invalid username or password. Please check your credentials and try again.');
       }

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { MapPin, Clock, Search, Filter, ArrowRight, DollarSign, Users } from 'lucide-react';
-import { Link } from 'react-router-dom';
-import { storageManager } from '../dashboard/utils/storage';
+import { simpleCloudStorageManager } from '../dashboard/utils';
 
 const JobsList = () => {
   const [jobs, setJobs] = useState([]);
@@ -22,7 +21,7 @@ const JobsList = () => {
   const loadJobs = async () => {
     try {
       // Get published job listings only
-      const allJobs = await storageManager.list('jobs');
+      const allJobs = await simpleCloudStorageManager.list('jobs');
       const publishedJobs = allJobs.filter(job => job.status === 'published');
       setJobs(publishedJobs);
     } catch (error) {
@@ -196,9 +195,9 @@ const JobsList = () => {
                         <div className="flex-1">
                           <div className="flex items-center gap-3 mb-2">
                             <h2 className="text-2xl font-semibold text-primary hover:text-azure transition-colors duration-200">
-                              <Link to={`/jobs/${job.id}`}>
+                              <a href={`/jobs/${job.id}`}>
                                 {job.title}
-                              </Link>
+                              </a>
                             </h2>
                             <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${getEmploymentTypeColor(job.employmentType)}`}>
                               <Clock className="h-3 w-3 mr-1" />
@@ -270,13 +269,13 @@ const JobsList = () => {
 
                     {/* Action Button */}
                     <div className="mt-4 lg:mt-0 lg:ml-6">
-                      <Link
-                        to={`/jobs/${job.id}`}
+                      <a
+                        href={`/jobs/${job.id}`}
                         className="inline-flex items-center px-6 py-3 bg-azure text-white font-medium rounded-lg hover:bg-azureSoft transition-colors duration-200"
                       >
                         View Details
                         <ArrowRight className="ml-2 h-4 w-4" />
-                      </Link>
+                      </a>
                     </div>
                   </div>
                 </div>

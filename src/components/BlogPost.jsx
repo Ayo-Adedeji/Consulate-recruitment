@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Calendar, User, Tag, ArrowLeft, Share2, Clock } from 'lucide-react';
-import { storageManager } from '../dashboard/utils/storage';
+import { simpleCloudStorageManager } from '../dashboard/utils';
 
 const BlogPost = () => {
   const { slug } = useParams();
@@ -18,7 +18,7 @@ const BlogPost = () => {
   const loadBlogPost = async () => {
     try {
       // Get all published blog posts
-      const allPosts = await storageManager.list('blog');
+      const allPosts = await simpleCloudStorageManager.list('blog');
       const publishedPosts = allPosts.filter(post => post.status === 'published');
       
       // Find the post with matching slug

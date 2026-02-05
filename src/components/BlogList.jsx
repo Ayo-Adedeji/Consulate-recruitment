@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Calendar, User, Tag, ArrowRight, Search, Filter } from 'lucide-react';
-import { storageManager } from '../dashboard/utils/storage';
+import { simpleCloudStorageManager } from '../dashboard/utils';
 
 const BlogList = () => {
   const [posts, setPosts] = useState([]);
@@ -20,7 +20,7 @@ const BlogList = () => {
   const loadBlogPosts = async () => {
     try {
       // Get published blog posts only
-      const allPosts = await storageManager.list('blog');
+      const allPosts = await simpleCloudStorageManager.list('blog');
       const publishedPosts = allPosts.filter(post => post.status === 'published');
       setPosts(publishedPosts);
     } catch (error) {

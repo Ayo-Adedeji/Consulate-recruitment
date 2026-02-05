@@ -5,7 +5,7 @@ import { DataTable, FormBuilder, ConfirmDialog, LoadingSpinner } from '../ui';
 import { useToast } from '../ui/Toast';
 import { JobListing } from '../../types/content';
 import { TableColumn, FormField } from '../../types/ui';
-import { storageManager } from '../../utils/storage';
+import { simpleCloudStorageManager } from '../../utils';
 
 const JobsManager: React.FC = () => {
   const [jobs, setJobs] = useState<JobListing[]>([]);
@@ -32,7 +32,7 @@ const JobsManager: React.FC = () => {
   const loadJobs = useCallback(async () => {
     try {
       setLoading(true);
-      const jobsData = await storageManager.list<JobListing>('jobs');
+      const jobsData = await simpleCloudStorageManager.list<JobListing>('jobs');
       setJobs(jobsData);
     } catch (error) {
       console.error('Failed to load jobs:', error);
@@ -333,7 +333,7 @@ const JobsManager: React.FC = () => {
 
       if (editingJob) {
         // Update existing job
-        await storageManager.update<JobListing>('jobs', editingJob.id, jobData);
+        await simpleCloudStorageManager.update<JobListing>('jobs', editingJob.id, jobData);
         showToast({
           type: 'success',
           title: 'Success',
@@ -341,7 +341,7 @@ const JobsManager: React.FC = () => {
         });
       } else {
         // Create new job
-        await storageManager.create<JobListing>('jobs', jobData);
+        await simpleCloudStorageManager.create<JobListing>('jobs', jobData);
         showToast({
           type: 'success',
           title: 'Success',
@@ -376,7 +376,7 @@ const JobsManager: React.FC = () => {
     if (!deleteConfirm.job) return;
 
     try {
-      await storageManager.delete('jobs', deleteConfirm.job.id);
+      await simpleCloudStorageManager.delete('jobs', deleteConfirm.job.id);
       showToast({
         type: 'success',
         title: 'Success',

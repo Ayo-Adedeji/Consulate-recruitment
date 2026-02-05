@@ -13,7 +13,7 @@ import {
   Building,
   Mail
 } from 'lucide-react';
-import { storageManager } from '../dashboard/utils/storage';
+import { simpleCloudStorageManager } from '../dashboard/utils';
 
 const JobDetail = () => {
   const { id } = useParams();
@@ -31,7 +31,7 @@ const JobDetail = () => {
   const loadJobDetail = async () => {
     try {
       // Get all published jobs
-      const allJobs = await storageManager.list('jobs');
+      const allJobs = await simpleCloudStorageManager.list('jobs');
       const publishedJobs = allJobs.filter(job => job.status === 'published');
       
       // Find the job with matching ID

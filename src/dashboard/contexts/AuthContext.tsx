@@ -16,18 +16,26 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     // Check for existing session on mount
     const checkExistingSession = () => {
       try {
-        // Only check for user preferences in localStorage, not full user data
-        const userPreferences = localStorage.getItem('dashboard_user_preferences');
-        const rememberedUsername = userPreferences ? JSON.parse(userPreferences).username : null;
-        
-        // Session tokens are kept in memory only for security
-        // In a real app, you might check for a secure httpOnly cookie here
-        if (rememberedUsername) {
-          // Auto-login would require re-authentication in a real app
-          // For demo purposes, we'll just remember the username
+        // Check for stored session
+        const storedSession = localStorage.getItem('dashboard_session');
+        if (storedSession) {
+          const sessionData = JSON.parse(storedSession);
+          
+          // Check if session is still valid (not expired)
+          const sessionAge = Date.now() - sessionData.timestamp;
+          const maxAge = 24 * 60 * 60 * 1000; // 24 hours
+          
+          if (sessionAge < maxAge) {
+            setUser(sessionData.user);
+            setSessionToken(sessionData.token);
+          } else {
+            // Session expired, clear it
+            localStorage.removeItem('dashboard_session');
+          }
         }
       } catch (error) {
-        console.error('Error loading user preferences:', error);
+        console.error('Error loading session:', error);
+        localStorage.removeItem('dashboard_session');
       } finally {
         setIsLoading(false);
       }
@@ -65,8 +73,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       );
 
       if (matchedUser) {
-        // Generate a mock session token (in memory only)
-        const token = `token_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+        // Generate a mock session token
+        const token = `token_${Date.now()}_${Math.random().toString(36).substring(2, 9)}`;
         setSessionToken(token);
 
         const authenticatedUser: User = {
@@ -80,11 +88,13 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         
         setUser(authenticatedUser);
         
-        // Only store user preferences, not sensitive data
-        localStorage.setItem('dashboard_user_preferences', JSON.stringify({
-          username: authenticatedUser.username,
-          theme: 'light' // Example preference
-        }));
+        // Store session data for persistence across page refreshes
+        const sessionData = {
+          user: authenticatedUser,
+          token: token,
+          timestamp: Date.now()
+        };
+        localStorage.setItem('dashboard_session', JSON.stringify(sessionData));
         
         return true;
       }
@@ -99,8 +109,12 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const logout = () => {
     setUser(null);
     setSessionToken(null);
-    // Clear user preferences on logout
+    // Clear session data on logout
+    localStorage.removeItem('dashboard_session');
     localStorage.removeItem('dashboard_user_preferences');
+    
+    // Redirect to login page
+    window.location.href = '/dashboard';
   };
 
   const hasPermission = (permission: Permission): boolean => {

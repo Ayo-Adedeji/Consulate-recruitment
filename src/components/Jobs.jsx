@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { MapPin, Clock, ArrowRight } from "lucide-react";
 import jobsBg from "../assets/jobsBg.jpg";
-import { storageManager } from "../dashboard/utils/storage";
+import { simpleCloudStorageManager } from "../dashboard/utils";
 
 const Jobs = () => {
   const sectionRef = useRef(null);
@@ -27,7 +27,7 @@ const Jobs = () => {
   const loadRecentJobs = async () => {
     try {
       // Get published job listings only
-      const allJobs = await storageManager.list('jobs');
+      const allJobs = await simpleCloudStorageManager.list('jobs');
       const publishedJobs = allJobs
         .filter(job => job.status === 'published')
         .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))

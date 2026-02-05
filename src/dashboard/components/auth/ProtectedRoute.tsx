@@ -1,5 +1,4 @@
 import React, { ReactNode } from 'react';
-import { Navigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 
 interface ProtectedRouteProps {
@@ -14,7 +13,8 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
   const { isAuthenticated, hasPermission } = useAuth();
 
   if (!isAuthenticated) {
-    return <Navigate to="/dashboard/login" replace />;
+    window.location.href = '/dashboard/login';
+    return null;
   }
 
   if (requiredPermission && !hasPermission(requiredPermission as any)) {

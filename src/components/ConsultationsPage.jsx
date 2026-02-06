@@ -1,12 +1,20 @@
-import { Calendar, Clock, Users, CheckCircle, ArrowRight, Star, Award, Briefcase, Phone, Mail } from 'lucide-react';
+import { useState } from 'react';
+import { Calendar, Clock, Users, CheckCircle, ArrowRight, Star, Award, Briefcase, Phone, Mail, Copy } from 'lucide-react';
 import Navbar from './Navbar';
 import Footer from './Footer';
 
 const ConsultationsPage = () => {
   const calendlyLink = "https://calendly.com/admin-consulaterecruitment";
+  const [emailCopied, setEmailCopied] = useState(false);
 
   const handleBookConsultation = () => {
     window.location.href = calendlyLink;
+  };
+
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText('admin@consulaterecruitment.co.uk');
+    setEmailCopied(true);
+    setTimeout(() => setEmailCopied(false), 2000);
   };
 
   return (
@@ -179,13 +187,23 @@ const ConsultationsPage = () => {
                 <Phone className="h-4 w-4 mr-2" />
                 Call Us: +01623 255223
               </a>
-              <a 
-                href="mailto:admin@consulaterecruitment.co.uk?subject=Consultation%20Request&body=Hello%20Consulate%20Recruitment%20Team,%0D%0A%0D%0AI%20would%20like%20to%20schedule%20a%20consultation%20to%20discuss:%0D%0A%0D%0A[Please%20describe%20your%20needs%20here]%0D%0A%0D%0ABest%20regards," 
-                className="flex items-center px-4 py-2 bg-blue-100 text-blue-800 rounded-lg hover:bg-blue-200 transition-colors text-sm"
-              >
-                <Mail className="h-4 w-4 mr-2" />
-                Email: admin@consulaterecruitment.co.uk
-              </a>
+              <div className="flex items-center gap-2">
+                <a 
+                  href="mailto:admin@consulaterecruitment.co.uk?subject=Consultation%20Request&body=Hello%20Consulate%20Recruitment%20Team,%0D%0A%0D%0AI%20would%20like%20to%20schedule%20a%20consultation%20to%20discuss:%0D%0A%0D%0A[Please%20describe%20your%20needs%20here]%0D%0A%0D%0ABest%20regards," 
+                  className="flex items-center px-4 py-2 bg-blue-100 text-blue-800 rounded-lg hover:bg-blue-200 transition-colors text-sm"
+                >
+                  <Mail className="h-4 w-4 mr-2" />
+                  Email: admin@consulaterecruitment.co.uk
+                </a>
+                <button
+                  onClick={handleCopyEmail}
+                  className="flex items-center px-3 py-2 bg-azure text-white rounded-lg hover:bg-azureSoft transition-colors text-sm"
+                  title="Copy email address"
+                >
+                  <Copy className="h-4 w-4 mr-1" />
+                  {emailCopied ? 'Copied!' : 'Copy'}
+                </button>
+              </div>
             </div>
           </div>
         </div>

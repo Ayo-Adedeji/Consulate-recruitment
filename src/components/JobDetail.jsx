@@ -23,6 +23,7 @@ const JobDetail = () => {
   const [loading, setLoading] = useState(true);
   const [showApplicationMessage, setShowApplicationMessage] = useState(false);
   const [relatedJobs, setRelatedJobs] = useState([]);
+  const [emailCopied, setEmailCopied] = useState(false);
 
   // Add CSS for animations
   useEffect(() => {
@@ -128,6 +129,12 @@ const JobDetail = () => {
         block: 'center'
       });
     }, 100);
+  };
+
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText('admin@consulaterecruitment.co.uk');
+    setEmailCopied(true);
+    setTimeout(() => setEmailCopied(false), 2000);
   };
 
   if (loading) {
@@ -309,17 +316,25 @@ const JobDetail = () => {
                         To apply for this position, please submit your details and CV to:
                       </p>
                       <div className="bg-white p-4 rounded-lg border border-blue-200">
-                        <p className="text-blue-900 font-medium mb-3">
-                          📧 <strong>Email:</strong>{' '}
-                          <a 
-                            href={`mailto:admin@consulaterecruitment.co.uk?subject=Application for ${encodeURIComponent(job.title)}&body=Dear Consulate Recruitment Team,%0D%0A%0D%0AI am writing to express my interest in the ${encodeURIComponent(job.title)} position at ${encodeURIComponent(job.location)}.%0D%0A%0D%0APlease find my CV attached.%0D%0A%0D%0ABest regards,`}
-                            className="text-azure hover:text-azureSoft underline transition-colors duration-200"
+                        <div className="flex items-center justify-between mb-2">
+                          <p className="text-blue-900 font-medium">
+                            📧 <strong>Email:</strong>{' '}
+                            <a 
+                              href={`mailto:admin@consulaterecruitment.co.uk?subject=Application for ${encodeURIComponent(job.title)}&body=Dear Consulate Recruitment Team,%0D%0A%0D%0AI am writing to express my interest in the ${encodeURIComponent(job.title)} position at ${encodeURIComponent(job.location)}.%0D%0A%0D%0APlease find my CV attached.%0D%0A%0D%0ABest regards,`}
+                              className="text-azure hover:text-azureSoft underline transition-colors duration-200"
+                            >
+                              admin@consulaterecruitment.co.uk
+                            </a>
+                          </p>
+                          <button
+                            onClick={handleCopyEmail}
+                            className="ml-2 px-3 py-1 text-xs bg-azure text-white rounded hover:bg-azureSoft transition-colors duration-200"
                           >
-                            admin@consulaterecruitment.co.uk
-                          </a>
-                        </p>
+                            {emailCopied ? '✓ Copied!' : 'Copy'}
+                          </button>
+                        </div>
                         <p className="text-sm text-blue-700">
-                          Click the email above to open your mail client with a pre-filled application template.
+                          Click the email to open your mail client, or use the Copy button.
                         </p>
                       </div>
                       <p className="text-sm text-blue-700 mt-3">

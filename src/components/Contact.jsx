@@ -74,38 +74,12 @@ const Contact = () => {
     setIsSubmitting(true);
     setSubmitStatus(null);
     
-    try {
-      // Create email content
-      const emailSubject = `Contact Form: ${formData.subject} - ${formData.inquiryType.toUpperCase()}`;
-      
-      let emailBody = `NEW CONTACT FORM SUBMISSION\n\n`;
-      emailBody += `CONTACT INFORMATION:\n`;
-      emailBody += `Name: ${formData.name}\n`;
-      emailBody += `Email: ${formData.email}\n`;
-      emailBody += `Phone: ${formData.phone || 'Not provided'}\n`;
-      emailBody += `Company: ${formData.company || 'Not provided'}\n\n`;
-      
-      emailBody += `INQUIRY DETAILS:\n`;
-      emailBody += `Type: ${formData.inquiryType.charAt(0).toUpperCase() + formData.inquiryType.slice(1)} Inquiry\n`;
-      emailBody += `Subject: ${formData.subject}\n\n`;
-      
-      emailBody += `MESSAGE:\n`;
-      emailBody += `${formData.message}\n\n`;
-      
-      emailBody += `SUBMISSION DETAILS:\n`;
-      emailBody += `Date: ${new Date().toLocaleDateString()}\n`;
-      emailBody += `Time: ${new Date().toLocaleTimeString()}\n`;
-      emailBody += `Source: Website Contact Form\n`;
-      
-      // Create mailto link
-      const mailtoLink = `mailto:admin@consulaterecruitment.co.uk?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
-      
-      // Open email client
-      window.location.href = mailtoLink;
-      
+    // FormSubmit will handle the actual submission
+    // The form element has action and method attributes
+    setTimeout(() => {
       setSubmitStatus('success');
-      
-      // Reset form after successful submission
+      setIsSubmitting(false);
+      // Reset form after 3 seconds
       setTimeout(() => {
         setFormData({
           name: '',
@@ -117,14 +91,8 @@ const Contact = () => {
           inquiryType: 'general'
         });
         setSubmitStatus(null);
-      }, 5000);
-      
-    } catch (error) {
-      console.error('Submission error:', error);
-      setSubmitStatus('error');
-    } finally {
-      setIsSubmitting(false);
-    }
+      }, 3000);
+    }, 500);
   };
 
   const socialLinks = [
@@ -352,7 +320,16 @@ const Contact = () => {
                   <h2 className="text-2xl font-bold text-primary">Send a Message</h2>
                 </div>
                 
-                <form onSubmit={handleSubmit} className="space-y-5">
+                <form 
+                  action="https://formsubmit.co/admin@consulaterecruitment.co.uk" 
+                  method="POST"
+                  onSubmit={handleSubmit} 
+                  className="space-y-5"
+                >
+                  {/* FormSubmit Configuration Fields */}
+                  <input type="hidden" name="_subject" value="New Contact Form Submission" />
+                  <input type="hidden" name="_captcha" value="false" />
+                  <input type="hidden" name="_template" value="table" />
                   
                   {/* Inquiry Type */}
                   <div className="group">
@@ -360,6 +337,7 @@ const Contact = () => {
                       Inquiry Type
                     </label>
                     <select
+                      name="inquiry_type"
                       value={formData.inquiryType}
                       onChange={(e) => handleInputChange('inquiryType', e.target.value)}
                       className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-4 focus:ring-azure/20 focus:border-azure transition-all duration-300 bg-white hover:border-azure/50 group-hover:border-azure/50"
@@ -379,8 +357,10 @@ const Contact = () => {
                       </label>
                       <input
                         type="text"
+                        name="name"
                         value={formData.name}
                         onChange={(e) => handleInputChange('name', e.target.value)}
+                        required
                         className={`w-full px-4 py-3 border-2 rounded-xl focus:ring-4 focus:ring-azure/20 focus:border-azure transition-all duration-300 bg-white hover:border-azure/50 group-hover:border-azure/50 ${
                           errors.name ? 'border-red-300 bg-red-50' : 'border-gray-200'
                         }`}
@@ -395,8 +375,10 @@ const Contact = () => {
                       </label>
                       <input
                         type="email"
+                        name="email"
                         value={formData.email}
                         onChange={(e) => handleInputChange('email', e.target.value)}
+                        required
                         className={`w-full px-4 py-3 border-2 rounded-xl focus:ring-4 focus:ring-azure/20 focus:border-azure transition-all duration-300 bg-white hover:border-azure/50 group-hover:border-azure/50 ${
                           errors.email ? 'border-red-300 bg-red-50' : 'border-gray-200'
                         }`}
@@ -414,6 +396,7 @@ const Contact = () => {
                       </label>
                       <input
                         type="tel"
+                        name="phone"
                         value={formData.phone}
                         onChange={(e) => handleInputChange('phone', e.target.value)}
                         className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-4 focus:ring-azure/20 focus:border-azure transition-all duration-300 bg-white hover:border-azure/50 group-hover:border-azure/50"
@@ -427,6 +410,7 @@ const Contact = () => {
                       </label>
                       <input
                         type="text"
+                        name="company"
                         value={formData.company}
                         onChange={(e) => handleInputChange('company', e.target.value)}
                         className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-4 focus:ring-azure/20 focus:border-azure transition-all duration-300 bg-white hover:border-azure/50 group-hover:border-azure/50"
@@ -442,8 +426,10 @@ const Contact = () => {
                     </label>
                     <input
                       type="text"
+                      name="subject"
                       value={formData.subject}
                       onChange={(e) => handleInputChange('subject', e.target.value)}
+                      required
                       className={`w-full px-4 py-3 border-2 rounded-xl focus:ring-4 focus:ring-azure/20 focus:border-azure transition-all duration-300 bg-white hover:border-azure/50 group-hover:border-azure/50 ${
                         errors.subject ? 'border-red-300 bg-red-50' : 'border-gray-200'
                       }`}
@@ -458,8 +444,10 @@ const Contact = () => {
                       Message <span className="text-red-500">*</span>
                     </label>
                     <textarea
+                      name="message"
                       value={formData.message}
                       onChange={(e) => handleInputChange('message', e.target.value)}
+                      required
                       rows={5}
                       className={`w-full px-4 py-3 border-2 rounded-xl focus:ring-4 focus:ring-azure/20 focus:border-azure transition-all duration-300 bg-white hover:border-azure/50 group-hover:border-azure/50 resize-none ${
                         errors.message ? 'border-red-300 bg-red-50' : 'border-gray-200'

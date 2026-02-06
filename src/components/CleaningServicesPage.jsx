@@ -33,10 +33,8 @@ const CleaningServicesPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const emailSubject = `Cleaning Services Request - ${formData.name}`;
-    const emailBody = `Name: ${formData.name}\nEmail: ${formData.email}\nCompany: ${formData.company || 'Not provided'}\nPhone: ${formData.phone || 'Not provided'}\n\nMessage:\n${formData.message}\n\n---\nThis request was submitted from the Cleaning Services page.`.trim();
-    const mailtoLink = `mailto:admin@consulaterecruitment.co.uk?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
-    window.location.href = mailtoLink;
+    // FormSubmit will handle the submission
+    // Form has action and method attributes
   };
 
   const whenNeeded = [
@@ -339,7 +337,17 @@ const CleaningServicesPage = () => {
             <div data-animate className="stagger-1">
               <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20">
                 <h3 className="text-2xl font-bold text-white mb-6">Request a Cleaning Quote</h3>
-                <form onSubmit={handleSubmit} className="space-y-4">
+                <form 
+                  action="https://formsubmit.co/admin@consulaterecruitment.co.uk"
+                  method="POST"
+                  onSubmit={handleSubmit} 
+                  className="space-y-4"
+                >
+                  {/* FormSubmit Configuration */}
+                  <input type="hidden" name="_subject" value="Cleaning Services Request" />
+                  <input type="hidden" name="_captcha" value="false" />
+                  <input type="hidden" name="_template" value="table" />
+                  
                   <div>
                     <label htmlFor="name" className="block text-white/90 text-sm font-medium mb-2">Your Name *</label>
                     <input type="text" id="name" name="name" value={formData.name} onChange={handleInputChange} required className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50 backdrop-blur-sm" placeholder="John Smith" />

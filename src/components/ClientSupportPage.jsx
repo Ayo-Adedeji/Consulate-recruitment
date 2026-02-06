@@ -72,27 +72,8 @@ const ClientSupportPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
-    // Create email content
-    const emailSubject = `Client Support Inquiry - ${formData.name}`;
-    const emailBody = `
-Name: ${formData.name}
-Email: ${formData.email}
-Company: ${formData.company || 'Not provided'}
-Phone: ${formData.phone || 'Not provided'}
-
-Message:
-${formData.message}
-
----
-This inquiry was submitted from the Client Support page.
-    `.trim();
-    
-    // Create mailto link
-    const mailtoLink = `mailto:admin@consulaterecruitment.co.uk?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
-    
-    // Open email client
-    window.location.href = mailtoLink;
+    // FormSubmit will handle the submission
+    // Form has action and method attributes
   };
 
   const services = [
@@ -580,7 +561,17 @@ This inquiry was submitted from the Client Support page.
 
             {/* Right Column - Contact Form */}
             <div data-animate className="stagger-1">
-              <form onSubmit={handleSubmit} className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
+              <form 
+                action="https://formsubmit.co/admin@consulaterecruitment.co.uk"
+                method="POST"
+                onSubmit={handleSubmit} 
+                className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20"
+              >
+                {/* FormSubmit Configuration */}
+                <input type="hidden" name="_subject" value="Client Support Inquiry" />
+                <input type="hidden" name="_captcha" value="false" />
+                <input type="hidden" name="_template" value="table" />
+                
                 <div className="space-y-4">
                   <div>
                     <label className="block text-white text-sm font-medium mb-2">Name *</label>

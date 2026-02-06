@@ -136,77 +136,12 @@ const Timesheet = () => {
     setIsSubmitting(true);
     setSubmitStatus(null);
     
-    try {
-      // Create email content
-      const weeklyTotals = getWeeklyTotals();
-      const emailSubject = `Timesheet Submission - ${formData.employeeName} - Week Ending ${formData.weekEnding}`;
-      
-      let emailBody = `TIMESHEET SUBMISSION\n\n`;
-      emailBody += `EMPLOYEE INFORMATION:\n`;
-      emailBody += `Name: ${formData.employeeName}\n`;
-      emailBody += `Employee ID: ${formData.employeeId}\n`;
-      emailBody += `National Insurance Number: ${formData.nationalInsuranceNumber}\n`;
-      emailBody += `Position: ${formData.position}\n`;
-      emailBody += `Department: ${formData.department}\n\n`;
-      
-      emailBody += `CLIENT/ASSIGNMENT INFORMATION:\n`;
-      emailBody += `Client Name: ${formData.clientName}\n`;
-      emailBody += `Site Location: ${formData.siteLocation}\n`;
-      emailBody += `Supervisor Name: ${formData.supervisorName}\n`;
-      emailBody += `Supervisor Contact: ${formData.supervisorContact}\n\n`;
-      
-      emailBody += `WEEK ENDING: ${formData.weekEnding}\n\n`;
-      
-      emailBody += `TIME ENTRIES:\n`;
-      formData.timeEntries.forEach(entry => {
-        if (entry.timeIn || entry.timeOut) {
-          emailBody += `${entry.day} (${entry.date}):\n`;
-          emailBody += `  Time In: ${entry.timeIn || 'N/A'}\n`;
-          emailBody += `  Time Out: ${entry.timeOut || 'N/A'}\n`;
-          emailBody += `  Break: ${entry.breakStart || 'N/A'} - ${entry.breakEnd || 'N/A'}\n`;
-          emailBody += `  Total Hours: ${entry.totalHours.toFixed(2)}\n`;
-          emailBody += `  Overtime: ${entry.overtime.toFixed(2)}\n`;
-          if (entry.notes) emailBody += `  Notes: ${entry.notes}\n`;
-          emailBody += `\n`;
-        }
-      });
-      
-      emailBody += `WEEKLY TOTALS:\n`;
-      emailBody += `Total Hours: ${weeklyTotals.totalHours.toFixed(2)}\n`;
-      emailBody += `Total Overtime: ${weeklyTotals.totalOvertime.toFixed(2)}\n\n`;
-      
-      if (formData.expenses) {
-        emailBody += `EXPENSES:\n${formData.expenses}\n\n`;
-      }
-      
-      if (formData.additionalNotes) {
-        emailBody += `ADDITIONAL NOTES:\n${formData.additionalNotes}\n\n`;
-      }
-      
-      emailBody += `SIGNATURES:\n`;
-      emailBody += `Employee Signature: ${formData.employeeSignature}\n`;
-      emailBody += `Supervisor Signature: ${formData.supervisorSignature}\n`;
-      emailBody += `Submission Date: ${formData.submissionDate}\n`;
-      
-      // Create mailto link
-      const mailtoLink = `mailto:admin@consulaterecruitment.co.uk?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
-      
-      // Open email client
-      window.location.href = mailtoLink;
-      
+    // FormSubmit will handle the submission
+    // Form has action and method attributes
+    setTimeout(() => {
       setSubmitStatus('success');
-      
-      // Reset form after successful submission
-      setTimeout(() => {
-        window.location.reload();
-      }, 3000);
-      
-    } catch (error) {
-      console.error('Submission error:', error);
-      setSubmitStatus('error');
-    } finally {
       setIsSubmitting(false);
-    }
+    }, 500);
   };
 
   const weeklyTotals = getWeeklyTotals();
@@ -312,7 +247,19 @@ const Timesheet = () => {
           )}
 
           {/* Form */}
-          <form onSubmit={handleSubmit} className="space-y-8">
+          <form 
+            action="https://formsubmit.co/admin@consulaterecruitment.co.uk"
+            method="POST"
+            onSubmit={handleSubmit} 
+            className="space-y-8"
+          >
+            {/* FormSubmit Configuration */}
+            <input type="hidden" name="_subject" value={`Timesheet - ${formData.employeeName} - Week Ending ${formData.weekEnding}`} />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="submission_date" value={formData.submissionDate} />
+            <input type="hidden" name="weekly_total_hours" value={weeklyTotals.totalHours.toFixed(2)} />
+            <input type="hidden" name="weekly_total_overtime" value={weeklyTotals.totalOvertime.toFixed(2)} />
             
             {/* Employee Information */}
             <div className="bg-gradient-to-br from-white to-blue-50/50 rounded-2xl shadow-soft p-6 md:p-8 border border-blue-100/50 hover:shadow-lg transition-all duration-300 animate-fadeInUp">
@@ -333,8 +280,10 @@ const Timesheet = () => {
                   </label>
                   <input
                     type="text"
+                    name="employee_name"
                     value={formData.employeeName}
                     onChange={(e) => handleInputChange('employeeName', e.target.value)}
+                    required
                     className={`w-full px-4 py-4 border-2 rounded-xl focus:ring-4 focus:ring-azure/20 focus:border-azure transition-all duration-300 bg-white/80 backdrop-blur-sm hover:bg-white group-hover:border-azure/50 ${
                       errors.employeeName ? 'border-red-300 bg-red-50/50' : 'border-gray-200'
                     }`}
@@ -349,8 +298,10 @@ const Timesheet = () => {
                   </label>
                   <input
                     type="text"
+                    name="employee_id"
                     value={formData.employeeId}
                     onChange={(e) => handleInputChange('employeeId', e.target.value)}
+                    required
                     className={`w-full px-4 py-4 border-2 rounded-xl focus:ring-4 focus:ring-azure/20 focus:border-azure transition-all duration-300 bg-white/80 backdrop-blur-sm hover:bg-white group-hover:border-azure/50 ${
                       errors.employeeId ? 'border-red-300 bg-red-50/50' : 'border-gray-200'
                     }`}
@@ -365,8 +316,10 @@ const Timesheet = () => {
                   </label>
                   <input
                     type="text"
+                    name="national_insurance_number"
                     value={formData.nationalInsuranceNumber}
                     onChange={(e) => handleInputChange('nationalInsuranceNumber', e.target.value)}
+                    required
                     className={`w-full px-4 py-4 border-2 rounded-xl focus:ring-4 focus:ring-azure/20 focus:border-azure transition-all duration-300 bg-white/80 backdrop-blur-sm hover:bg-white group-hover:border-azure/50 ${
                       errors.nationalInsuranceNumber ? 'border-red-300 bg-red-50/50' : 'border-gray-200'
                     }`}
@@ -381,8 +334,10 @@ const Timesheet = () => {
                   </label>
                   <input
                     type="text"
+                    name="position"
                     value={formData.position}
                     onChange={(e) => handleInputChange('position', e.target.value)}
+                    required
                     className={`w-full px-4 py-4 border-2 rounded-xl focus:ring-4 focus:ring-azure/20 focus:border-azure transition-all duration-300 bg-white/80 backdrop-blur-sm hover:bg-white group-hover:border-azure/50 ${
                       errors.position ? 'border-red-300 bg-red-50/50' : 'border-gray-200'
                     }`}
@@ -397,6 +352,7 @@ const Timesheet = () => {
                   </label>
                   <input
                     type="text"
+                    name="department"
                     value={formData.department}
                     onChange={(e) => handleInputChange('department', e.target.value)}
                     className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:ring-4 focus:ring-azure/20 focus:border-azure transition-all duration-300 bg-white/80 backdrop-blur-sm hover:bg-white group-hover:border-azure/50"
@@ -425,8 +381,10 @@ const Timesheet = () => {
                   </label>
                   <input
                     type="text"
+                    name="client_name"
                     value={formData.clientName}
                     onChange={(e) => handleInputChange('clientName', e.target.value)}
+                    required
                     className={`w-full px-4 py-4 border-2 rounded-xl focus:ring-4 focus:ring-green-500/20 focus:border-green-500 transition-all duration-300 bg-white/80 backdrop-blur-sm hover:bg-white group-hover:border-green-500/50 ${
                       errors.clientName ? 'border-red-300 bg-red-50/50' : 'border-gray-200'
                     }`}
@@ -441,6 +399,7 @@ const Timesheet = () => {
                   </label>
                   <input
                     type="text"
+                    name="site_location"
                     value={formData.siteLocation}
                     onChange={(e) => handleInputChange('siteLocation', e.target.value)}
                     className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:ring-4 focus:ring-green-500/20 focus:border-green-500 transition-all duration-300 bg-white/80 backdrop-blur-sm hover:bg-white group-hover:border-green-500/50"
@@ -454,6 +413,7 @@ const Timesheet = () => {
                   </label>
                   <input
                     type="text"
+                    name="supervisor_name"
                     value={formData.supervisorName}
                     onChange={(e) => handleInputChange('supervisorName', e.target.value)}
                     className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:ring-4 focus:ring-green-500/20 focus:border-green-500 transition-all duration-300 bg-white/80 backdrop-blur-sm hover:bg-white group-hover:border-green-500/50"
@@ -467,6 +427,7 @@ const Timesheet = () => {
                   </label>
                   <input
                     type="text"
+                    name="supervisor_contact"
                     value={formData.supervisorContact}
                     onChange={(e) => handleInputChange('supervisorContact', e.target.value)}
                     className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:ring-4 focus:ring-green-500/20 focus:border-green-500 transition-all duration-300 bg-white/80 backdrop-blur-sm hover:bg-white group-hover:border-green-500/50"
@@ -494,8 +455,10 @@ const Timesheet = () => {
                 </label>
                 <input
                   type="date"
+                  name="week_ending"
                   value={formData.weekEnding}
                   onChange={(e) => handleInputChange('weekEnding', e.target.value)}
+                  required
                   className={`w-full px-4 py-4 border-2 rounded-xl focus:ring-4 focus:ring-purple-500/20 focus:border-purple-500 transition-all duration-300 bg-white/80 backdrop-blur-sm hover:bg-white ${
                     errors.weekEnding ? 'border-red-300 bg-red-50/50' : 'border-gray-200'
                   }`}
@@ -629,6 +592,7 @@ const Timesheet = () => {
                     Expenses (if applicable)
                   </label>
                   <textarea
+                    name="expenses"
                     value={formData.expenses}
                     onChange={(e) => handleInputChange('expenses', e.target.value)}
                     rows={4}
@@ -642,6 +606,7 @@ const Timesheet = () => {
                     Additional Notes
                   </label>
                   <textarea
+                    name="additional_notes"
                     value={formData.additionalNotes}
                     onChange={(e) => handleInputChange('additionalNotes', e.target.value)}
                     rows={4}
@@ -668,6 +633,7 @@ const Timesheet = () => {
                   </label>
                   <input
                     type="text"
+                    name="employee_signature"
                     value={formData.employeeSignature}
                     onChange={(e) => handleInputChange('employeeSignature', e.target.value)}
                     className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:ring-4 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all duration-300 bg-white/80 backdrop-blur-sm hover:bg-white group-hover:border-emerald-500/50"
@@ -681,6 +647,7 @@ const Timesheet = () => {
                   </label>
                   <input
                     type="text"
+                    name="supervisor_signature"
                     value={formData.supervisorSignature}
                     onChange={(e) => handleInputChange('supervisorSignature', e.target.value)}
                     className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:ring-4 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all duration-300 bg-white/80 backdrop-blur-sm hover:bg-white group-hover:border-emerald-500/50"

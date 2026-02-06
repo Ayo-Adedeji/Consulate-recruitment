@@ -14,7 +14,7 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { name: "About", href: "/about" },
+    { name: "About Us", href: "/about" },
     { name: "Consultations", href: "/consultations" },
     { name: "Candidates", href: "/candidates" },
     { name: "Clients", href: "/clients" },
@@ -176,7 +176,7 @@ const Navbar = () => {
                 : 'text-white/90 hover:text-white'
             }`}
           >
-            Contact
+            Contact Us
             {isActiveLink('/contact') && (
               <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-white/80 font-bold rounded-full"></div>
             )}
@@ -266,7 +266,7 @@ const Navbar = () => {
                   : 'text-primary hover:bg-azure/5 hover:text-azure'
               }`}
             >
-              Contact
+              Contact Us
             </a>
 
             <a

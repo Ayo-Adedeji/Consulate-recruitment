@@ -171,32 +171,11 @@ const JobsList = () => {
     e.preventDefault();
     setIsSubmittingInterest(true);
 
-    try {
-      // Create email content
-      const emailContent = `
-New Job Interest Registration
-
-Candidate Details:
-- Full Name: ${interestFormData.fullName}
-- Email: ${interestFormData.email}
-- Phone: ${interestFormData.phone}
-- Preferred Job Type: ${interestFormData.jobType}
-- Years of Experience: ${interestFormData.experience}
-- Additional Message: ${interestFormData.message}
-
-Submitted on: ${new Date().toLocaleString()}
-      `;
-
-      // Create mailto link
-      const subject = `Job Interest Registration - ${interestFormData.fullName}`;
-      const body = encodeURIComponent(emailContent);
-      const mailtoLink = `mailto:admin@consulaterecruitment.co.uk?subject=${encodeURIComponent(subject)}&body=${body}`;
-      
-      // Open email client
-      window.location.href = mailtoLink;
-      
-      // Show success message
+    // FormSubmit will handle the submission
+    // Form has action and method attributes
+    setTimeout(() => {
       setInterestSubmitted(true);
+      setIsSubmittingInterest(false);
       
       // Reset form
       setInterestFormData({
@@ -207,13 +186,7 @@ Submitted on: ${new Date().toLocaleString()}
         experience: '',
         message: ''
       });
-
-    } catch (error) {
-      console.error('Error submitting interest form:', error);
-      alert('There was an error submitting your interest. Please try again.');
-    } finally {
-      setIsSubmittingInterest(false);
-    }
+    }, 500);
   };
 
   if (loading) {
@@ -625,7 +598,17 @@ Submitted on: ${new Date().toLocaleString()}
                       </button>
                     </div>
                   ) : (
-                    <form onSubmit={handleInterestFormSubmit} className="space-y-6 sm:space-y-8">
+                    <form 
+                      action="https://formsubmit.co/admin@consulaterecruitment.co.uk"
+                      method="POST"
+                      onSubmit={handleInterestFormSubmit} 
+                      className="space-y-6 sm:space-y-8"
+                    >
+                      {/* FormSubmit Configuration */}
+                      <input type="hidden" name="_subject" value="Job Interest Registration" />
+                      <input type="hidden" name="_captcha" value="false" />
+                      <input type="hidden" name="_template" value="table" />
+                      
                       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
                         <div>
                           <label htmlFor="fullName" className="block text-sm font-semibold text-gray-700 mb-2">
@@ -635,7 +618,7 @@ Submitted on: ${new Date().toLocaleString()}
                           <input
                             type="text"
                             id="fullName"
-                            name="fullName"
+                            name="full_name"
                             value={interestFormData.fullName}
                             onChange={handleInterestFormChange}
                             required
@@ -686,7 +669,7 @@ Submitted on: ${new Date().toLocaleString()}
                           </label>
                           <select
                             id="jobType"
-                            name="jobType"
+                            name="job_type"
                             value={interestFormData.jobType}
                             onChange={handleInterestFormChange}
                             required

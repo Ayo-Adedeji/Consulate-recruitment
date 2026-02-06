@@ -64,27 +64,8 @@ const PermanentRecruitmentPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
-    // Create email content
-    const emailSubject = `Permanent Recruitment Consultation Request - ${formData.name}`;
-    const emailBody = `
-Name: ${formData.name}
-Email: ${formData.email}
-Company: ${formData.company || 'Not provided'}
-Phone: ${formData.phone || 'Not provided'}
-
-Message:
-${formData.message}
-
----
-This consultation request was submitted from the Permanent Recruitment page.
-    `.trim();
-    
-    // Create mailto link
-    const mailtoLink = `mailto:admin@consulaterecruitment.co.uk?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
-    
-    // Open email client
-    window.location.href = mailtoLink;
+    // FormSubmit will handle the submission
+    // Form has action and method attributes
   };
 
   const rolesAvailable = [
@@ -633,7 +614,17 @@ This consultation request was submitted from the Permanent Recruitment page.
             </div>
 
             <div data-animate className="stagger-1">
-              <form onSubmit={handleSubmit} className="bg-white rounded-2xl p-8 shadow-2xl">
+              <form 
+                action="https://formsubmit.co/admin@consulaterecruitment.co.uk"
+                method="POST"
+                onSubmit={handleSubmit} 
+                className="bg-white rounded-2xl p-8 shadow-2xl"
+              >
+                {/* FormSubmit Configuration */}
+                <input type="hidden" name="_subject" value="Permanent Recruitment Consultation Request" />
+                <input type="hidden" name="_captcha" value="false" />
+                <input type="hidden" name="_template" value="table" />
+                
                 <h3 className="text-2xl font-bold text-primary mb-6">Request a Consultation</h3>
                 
                 <div className="space-y-4">

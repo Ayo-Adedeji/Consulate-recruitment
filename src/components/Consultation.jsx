@@ -20,32 +20,32 @@ const Consultation = () => {
   const services = [
     {
       icon: <FaFileAlt className="w-6 h-6" />,
-      title: "CV Restructuring & Optimization",
+      title: "CV Review & Optimization",
       description: "Professional CV enhancement to make you stand out"
     },
     {
       icon: <FaPalette className="w-6 h-6" />,
-      title: "Graphic Design Services",
+      title: "Graphic Design",
       description: "Creative design solutions for your professional needs"
     },
     {
       icon: <FaUsers className="w-6 h-6" />,
-      title: "Interview Coaching",
+      title: "Interview Coaching & Job Preparation",
       description: "Comprehensive preparation for successful interviews"
     },
     {
       icon: <FaGraduationCap className="w-6 h-6" />,
-      title: "UK University Applications",
-      description: "Expert guidance through university application process"
+      title: "Online Training Support",
+      description: "CPD-certified training with professional certification"
     },
     {
       icon: <FaUserGraduate className="w-6 h-6" />,
-      title: "CPD-Certified Training",
-      description: "Online care training with professional certification"
+      title: "Management Consultation",
+      description: "Expert guidance for business management and strategy"
     },
     {
       icon: <FaBriefcase className="w-6 h-6" />,
-      title: "Business Setup Support",
+      title: "Business Set-Up",
       description: "Complete assistance for starting your business"
     }
   ];
@@ -90,7 +90,7 @@ const Consultation = () => {
               isVisible ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
             }`}
           >
-            Comprehensive support designed to help you navigate your professional journey with confidence
+            Our consultation services are designed to provide practical, end-to-end support across a wide range of needs, including staffing solutions, cleaning services, management consulting, business set-up, interview coaching and job preparation, CV review and optimisation, graphic design, and online training support.
           </p>
         </div>
 
@@ -135,8 +135,8 @@ const Consultation = () => {
             <div className="space-y-4">
               {[
                 "Experienced professionals with years of UK market knowledge",
-                "Personalized approach tailored to your specific needs",
-                "Comprehensive support from application to certification",
+                "Personalized approach tailored to your specific goals",
+                "End-to-end support from strategy to implementation",
                 "Proven track record of successful outcomes"
               ].map((benefit, index) => (
                 <div
@@ -164,14 +164,10 @@ const Consultation = () => {
                 Comprehensive Support for Your Success
               </h3>
               <p className="text-white/90 leading-relaxed mb-6">
-                Whether you are a newcomer to the UK, an international student, support worker, 
-                or a job seeker in general, we understand that navigating professional development 
-                can feel overwhelming. With many years of experience in helping people adapt and succeed, 
-                our dedicated team is committed to making your journey as smooth and effective as possible.
+                Whether you are a business owner, a first-time entrepreneur, a newcomer to the UK, an international student, a support worker, or a job seeker, we understand that navigating these areas can be complex and overwhelming. With years of experience supporting individuals and organisations, our team is committed to delivering clear guidance and effective solutions tailored to your goals.
               </p>
               <p className="text-white/90 leading-relaxed">
-                We assist you at every step from handling paperwork and applications to 
-                building essential skills and earning certifications so you can focus on achieving your goals.
+                We support you at every stage from business strategy, paperwork, and applications to skills development and professional certification, so you can stay focused on growth, confidence, and long-term success.
               </p>
             </div>
           </div>

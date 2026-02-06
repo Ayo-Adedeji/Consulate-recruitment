@@ -22,10 +22,10 @@ const Navbar = () => {
   ];
 
   const serviceItems = [
-    { name: "CLIENT SUPPORT", href: "#client-support" },
-    { name: "PERMANENT RECRUITMENT", href: "#permanent-recruitment" },
-    { name: "TEMPORARY RECRUITMENT", href: "#temporary-recruitment" },
-    { name: "CLEANING SERVICES", href: "#cleaning-services" },
+    { name: "CLIENT SUPPORT", href: "/client-support" },
+    { name: "PERMANENT RECRUITMENT", href: "/permanent-recruitment" },
+    { name: "TEMPORARY RECRUITMENT", href: "/temporary-recruitment" },
+    { name: "CLEANING SERVICES", href: "/cleaning-services" },
   ];
 
   const handleMouseEnter = () => {

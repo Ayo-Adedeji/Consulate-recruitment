@@ -11,7 +11,7 @@ const recruitmentData = [
     image: temporary,
     icon: <FaUsers className="w-8 h-8" />,
     color: "from-blue-500 to-azure",
-    buttonLink: "#temporary-recruitment"
+    buttonLink: "/temporary-recruitment"
   },
   {
     title: "Permanent Recruitment", 
@@ -19,7 +19,7 @@ const recruitmentData = [
     image: permanent,
     icon: <FaUserTie className="w-8 h-8" />,
     color: "from-azure to-azureSoft",
-    buttonLink: "#permanent-recruitment"
+    buttonLink: "/permanent-recruitment"
   },
   {
     title: "Cleaning Services",
@@ -27,7 +27,7 @@ const recruitmentData = [
     image: cleaning,
     icon: <FaBroom className="w-8 h-8" />,
     color: "from-azureSoft to-primary",
-    buttonLink: "#cleaning-services"
+    buttonLink: "/cleaning-services"
   }
 ];
 

@@ -247,7 +247,6 @@ const Navbar = () => {
                     <a
                       key={item.name}
                       href={item.href}
-                      onClick={() => setOpen(false)}
                       className="block text-azure/80 hover:text-azure transition-all duration-300 font-medium py-2 px-3 rounded-lg hover:bg-azure/10"
                     >
                       {item.name}

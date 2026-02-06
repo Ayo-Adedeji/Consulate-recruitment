@@ -294,7 +294,7 @@ const AboutPage = () => {
       `}</style>
       
       {/* Hero Section */}
-      <section className="pt-32 pb-32 md:pb-40 bg-gradient-to-r from-azure via-azureSoft to-primary relative overflow-hidden min-h-[85vh] flex items-center">
+      <section className="pt-32 pb-32 md:pb-40 bg-gradient-to-r from-azure via-azureSoft to-primary relative overflow-hidden min-h-[60vh] flex items-center">
         {/* Animated Background Elements */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-10 left-10 w-20 h-20 bg-white rounded-full animate-pulse"></div>

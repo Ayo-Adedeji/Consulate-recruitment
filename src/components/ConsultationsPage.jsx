@@ -180,7 +180,7 @@ const ConsultationsPage = () => {
                 Call Us: +01623 255223
               </a>
               <a 
-                href="mailto:admin@consulaterecruitment.co.uk" 
+                href="mailto:admin@consulaterecruitment.co.uk?subject=Consultation%20Request&body=Hello%20Consulate%20Recruitment%20Team,%0D%0A%0D%0AI%20would%20like%20to%20schedule%20a%20consultation%20to%20discuss:%0D%0A%0D%0A[Please%20describe%20your%20needs%20here]%0D%0A%0D%0ABest%20regards," 
                 className="flex items-center px-4 py-2 bg-blue-100 text-blue-800 rounded-lg hover:bg-blue-200 transition-colors text-sm"
               >
                 <Mail className="h-4 w-4 mr-2" />

@@ -30,7 +30,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-gradient-to-br from-footer via-primary to-footer text-white relative overflow-hidden" style={{ maxHeight: "60vh" }}>
+    <footer className="bg-gradient-to-br from-footer via-primary to-footer text-white relative overflow-hidden">
       {/* Background Decorations */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-10 left-10 w-40 h-40 bg-azure rounded-full blur-3xl"></div>
@@ -39,7 +39,7 @@ export default function Footer() {
 
       <div className="relative">
         {/* Main Footer Content */}
-        <div className="max-w-7xl mx-auto px-6 py-8">
+        <div className="max-w-7xl mx-auto px-6 py-12">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             
             {/* Company Info */}
@@ -132,28 +132,28 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="border-t border-white/10">
-          <div className="max-w-7xl mx-auto px-6 py-4">
-            <div className="flex flex-col md:flex-row justify-between items-center gap-3 text-xs">
+          <div className="max-w-7xl mx-auto px-6 py-6">
+            <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
               
               {/* Copyright */}
               <div className="text-center md:text-left">
-                <p className="text-white/60">
+                <p className="text-white/70">
                   &copy; {currentYear} Consulate Recruitment Agency. All rights reserved. | Reg: 16096801
                 </p>
               </div>
 
               {/* Legal Links */}
-              <div className="flex gap-3">
+              <div className="flex gap-4">
                 <a 
                   href="/terms" 
-                  className="text-white/60 hover:text-accent transition-colors duration-300"
+                  className="text-white/70 hover:text-accent transition-colors duration-300"
                 >
                   Terms & Conditions
                 </a>
-                <span className="text-white/30">|</span>
+                <span className="text-white/40">|</span>
                 <a 
                   href="/privacy" 
-                  className="text-white/60 hover:text-accent transition-colors duration-300"
+                  className="text-white/70 hover:text-accent transition-colors duration-300"
                 >
                   Privacy Policy
                 </a>

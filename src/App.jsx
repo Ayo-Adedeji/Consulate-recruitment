@@ -17,6 +17,7 @@ import TemporaryRecruitmentPage from "./components/TemporaryRecruitmentPage";
 import CleaningServicesPage from "./components/CleaningServicesPage";
 import AboutPage from "./components/AboutPage";
 import ConsultationsPage from "./components/ConsultationsPage";
+import BooksPage from "./components/BooksPage";
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
         <Route path="/cleaning-services" element={<CleaningServicesPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/consultations" element={<ConsultationsPage />} />
+        <Route path="/books" element={<BooksPage />} />
         
         {/* Dashboard routes */}
         <Route path="/dashboard/*" element={<DashboardRoutes />} />

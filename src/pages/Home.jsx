@@ -15,6 +15,7 @@ import Consultation from '../components/Consultation'
 import Clients from '../components/Clients'
 import Marquee from '../components/Marquee'
 import RecentBlogs from '../components/RecentBlogs'
+import Books from '../components/Books'
 import FloatingButtons from '../components/FloatingButtons'
 
 const Home = () => {
@@ -32,6 +33,7 @@ const Home = () => {
         <Approach/>
         <Jobs/>
         <RecentBlogs/>
+        <Books/>
         <Youtube/>
         <Reviews/>
         <Process/>

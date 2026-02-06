@@ -143,7 +143,7 @@ const AboutPage = () => {
       color: 'from-emerald-500 to-emerald-600'
     },
     {
-      title: "Management Services",
+      title: "Management Consulting",
       description: "We go beyond providing services; we build lasting partnerships. Our team delivers ongoing support to ensure smooth and effective management within your operations. By understanding the complexities of service management, we ensure every solution is aligned with your requirements and fully compliant with industry standards.",
       image: consulting,
       icon: <Target className="w-8 h-8 text-azureSoft" />,
@@ -584,6 +584,7 @@ const AboutPage = () => {
           </div>
 
           {/* Team Members - Horizontal Scroll */}
+          {/* COMMENTED OUT - Will be added back later
           <div 
             className="animate-slide-in-up overflow-x-auto team-scroll pb-4"
             data-animate-id="team-members"
@@ -610,7 +611,6 @@ const AboutPage = () => {
                     <p className="text-accent font-semibold mb-1">{member.qualifications}</p>
                     <p className="text-blue-100 text-sm mb-4">{member.position}</p>
                     
-                    {/* Social Links */}
                     <div className="flex justify-center space-x-3">
                       <a 
                         href={member.social.facebook} 
@@ -637,13 +637,13 @@ const AboutPage = () => {
             </div>
           </div>
 
-          {/* Scroll Indicator */}
           <div className="text-center mt-8">
             <p className="text-blue-100 text-sm flex items-center justify-center">
               <ArrowRight className="h-4 w-4 mr-2 animate-pulse" />
               Scroll horizontally to see all team members
             </p>
           </div>
+          */}
         </div>
       </section>
 

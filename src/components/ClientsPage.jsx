@@ -125,10 +125,10 @@ const ClientsPage = () => {
   ];
 
   const industries = [
-    { name: 'Healthcare & Social Care', icon: Heart, count: '500+' },
-    { name: 'Retail & Customer Service', icon: Building2, count: '200+' },
-    { name: 'Cleaning Services', icon: Sparkles, count: '150+' },
-    { name: 'Management & Administration', icon: Briefcase, count: '100+' }
+    { name: 'Healthcare & Social Care', icon: Heart, count: '10+' },
+    { name: 'Retail & Customer Service', icon: Building2, count: '5+' },
+    { name: 'Cleaning Services', icon: Sparkles, count: '10+' },
+    { name: 'Management & Administration', icon: Briefcase, count: '20+' }
   ];
 
   return (

@@ -84,11 +84,11 @@ const Hero = () => {
           </div>
           <div className="flex items-center gap-2">
             <div className="w-2 h-2 bg-azure rounded-full animate-pulse"></div>
-            <span>East Midlands Coverage</span>
+            <span>United Kingdom coverage</span>
           </div>
           <div className="flex items-center gap-2">
             <div className="w-2 h-2 bg-accent rounded-full animate-pulse"></div>
-            <span>Trusted by 100+ Clients</span>
+            <span>Trusted by 20+ Clients</span>
           </div>
         </div>
       </div>

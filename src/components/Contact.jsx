@@ -14,6 +14,7 @@ import {
 import { FaFacebookF, FaInstagram, FaLinkedinIn, FaTwitter } from 'react-icons/fa';
 import Navbar from './Navbar';
 import Footer from './Footer';
+import Toast from './Toast';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -28,12 +29,26 @@ const Contact = () => {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
+  const [showToast, setShowToast] = useState(false);
+  const [toastMessage, setToastMessage] = useState('');
+  const [toastType, setToastType] = useState('success');
   const [errors, setErrors] = useState({});
   const [isVisible, setIsVisible] = useState(false);
 
-  // Animation trigger
+  // Animation trigger and success detection
   useEffect(() => {
     setIsVisible(true);
+    
+    // Check if user was redirected back after form submission
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('submitted') === 'true') {
+      setSubmitStatus('success');
+      setToastType('success');
+      setToastMessage('Message sent successfully! We\'ll get back to you within 24 hours.');
+      setShowToast(true);
+      // Clean up URL
+      window.history.replaceState({}, '', '/contact');
+    }
   }, []);
 
   // Handle form input changes
@@ -68,31 +83,14 @@ const Contact = () => {
     
     if (!validateForm()) {
       setSubmitStatus('error');
+      setToastType('error');
+      setToastMessage('Please fill in all required fields correctly');
+      setShowToast(true);
       return;
     }
     
-    setIsSubmitting(true);
-    setSubmitStatus(null);
-    
-    // FormSubmit will handle the actual submission
-    // The form element has action and method attributes
-    setTimeout(() => {
-      setSubmitStatus('success');
-      setIsSubmitting(false);
-      // Reset form after 3 seconds
-      setTimeout(() => {
-        setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          company: '',
-          subject: '',
-          message: '',
-          inquiryType: 'general'
-        });
-        setSubmitStatus(null);
-      }, 3000);
-    }, 500);
+    // If validation passes, submit the form to FormSubmit
+    e.target.submit();
   };
 
   const socialLinks = [
@@ -137,6 +135,15 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
+      {/* Toast Notification */}
+      {showToast && (
+        <Toast
+          message={toastMessage}
+          type={toastType}
+          onClose={() => setShowToast(false)}
+        />
+      )}
+      
       <Navbar />
       
       {/* Enhanced Header with Animation */}
@@ -330,6 +337,7 @@ const Contact = () => {
                   <input type="hidden" name="_subject" value="New Contact Form Submission" />
                   <input type="hidden" name="_captcha" value="false" />
                   <input type="hidden" name="_template" value="table" />
+                  <input type="hidden" name="_next" value={`${window.location.origin}/contact?submitted=true`} />
                   
                   {/* Inquiry Type */}
                   <div className="group">

@@ -133,15 +133,8 @@ const Timesheet = () => {
       return;
     }
     
-    setIsSubmitting(true);
-    setSubmitStatus(null);
-    
-    // FormSubmit will handle the submission
-    // Form has action and method attributes
-    setTimeout(() => {
-      setSubmitStatus('success');
-      setIsSubmitting(false);
-    }, 500);
+    // If validation passes, submit the form to FormSubmit
+    e.target.submit();
   };
 
   const weeklyTotals = getWeeklyTotals();

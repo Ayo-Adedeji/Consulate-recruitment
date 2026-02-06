@@ -356,7 +356,7 @@ const TemporaryRecruitmentPage = () => {
                   </div>
                   <div>
                     <p className="text-white/70 text-sm">Call us</p>
-                    <a href="tel:+01623 255223" className="text-white font-semibold hover:text-yellow-300 transition-colors">+44 7438 733336</a>
+                    <a href="tel:+01623 255223" className="text-white font-semibold hover:text-yellow-300 transition-colors">+01623 255223</a>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">

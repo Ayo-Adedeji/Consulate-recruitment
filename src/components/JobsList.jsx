@@ -23,12 +23,20 @@ const JobsList = () => {
     experience: '',
     message: ''
   });
-  const [isSubmittingInterest, setIsSubmittingInterest] = useState(false);
   const [interestSubmitted, setInterestSubmitted] = useState(false);
 
   useEffect(() => {
     setIsVisible(true);
     loadJobs();
+    
+    // Check if user was redirected back after form submission
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('submitted') === 'true') {
+      setShowInterestForm(true);
+      setInterestSubmitted(true);
+      // Clean up URL
+      window.history.replaceState({}, '', '/jobs');
+    }
   }, []);
 
   useEffect(() => {
@@ -161,32 +169,21 @@ const JobsList = () => {
 
   const handleInterestFormChange = (e) => {
     const { name, value } = e.target;
+    // Map form field names to state keys
+    const fieldMap = {
+      'full_name': 'fullName',
+      'email': 'email',
+      'phone': 'phone',
+      'job_type': 'jobType',
+      'experience': 'experience',
+      'message': 'message'
+    };
+    
+    const stateKey = fieldMap[name] || name;
     setInterestFormData(prev => ({
       ...prev,
-      [name]: value
+      [stateKey]: value
     }));
-  };
-
-  const handleInterestFormSubmit = async (e) => {
-    e.preventDefault();
-    setIsSubmittingInterest(true);
-
-    // FormSubmit will handle the submission
-    // Form has action and method attributes
-    setTimeout(() => {
-      setInterestSubmitted(true);
-      setIsSubmittingInterest(false);
-      
-      // Reset form
-      setInterestFormData({
-        fullName: '',
-        email: '',
-        phone: '',
-        jobType: '',
-        experience: '',
-        message: ''
-      });
-    }, 500);
   };
 
   if (loading) {
@@ -601,13 +598,13 @@ const JobsList = () => {
                     <form 
                       action="https://formsubmit.co/admin@consulaterecruitment.co.uk"
                       method="POST"
-                      onSubmit={handleInterestFormSubmit} 
                       className="space-y-6 sm:space-y-8"
                     >
                       {/* FormSubmit Configuration */}
                       <input type="hidden" name="_subject" value="Job Interest Registration" />
                       <input type="hidden" name="_captcha" value="false" />
                       <input type="hidden" name="_template" value="table" />
+                      <input type="hidden" name="_next" value={`${window.location.origin}/jobs?submitted=true`} />
                       
                       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
                         <div>
@@ -727,20 +724,10 @@ const JobsList = () => {
                       <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-6">
                         <button
                           type="submit"
-                          disabled={isSubmittingInterest}
-                          className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-azure via-azureSoft to-primary text-white font-semibold text-lg rounded-xl hover:from-azureSoft hover:via-primary hover:to-azure focus:outline-none focus:ring-4 focus:ring-azure/20 transition-all duration-300 transform hover:scale-105 hover:shadow-lg shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
+                          className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-azure via-azureSoft to-primary text-white font-semibold text-lg rounded-xl hover:from-azureSoft hover:via-primary hover:to-azure focus:outline-none focus:ring-4 focus:ring-azure/20 transition-all duration-300 transform hover:scale-105 hover:shadow-lg shadow-md"
                         >
-                          {isSubmittingInterest ? (
-                            <>
-                              <div className="animate-spin rounded-full h-5 w-5 border-2 border-white border-t-transparent mr-3"></div>
-                              Submitting...
-                            </>
-                          ) : (
-                            <>
-                              <Send className="mr-3 h-5 w-5" />
-                              Submit Interest
-                            </>
-                          )}
+                          <Send className="mr-3 h-5 w-5" />
+                          Submit Interest
                         </button>
 
                         <button

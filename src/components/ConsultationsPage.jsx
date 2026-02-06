@@ -173,11 +173,11 @@ const ConsultationsPage = () => {
             </h3>
             <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
               <a 
-                href="tel:+44-123-456-7890" 
+                href="tel:+01623 255223" 
                 className="flex items-center px-4 py-2 bg-emerald-100 text-emerald-800 rounded-lg hover:bg-emerald-200 transition-colors text-sm"
               >
                 <Phone className="h-4 w-4 mr-2" />
-                Call Us: +44 123 456 7890
+                Call Us: +01623 255223
               </a>
               <a 
                 href="mailto:admin@consulaterecruitment.co.uk" 

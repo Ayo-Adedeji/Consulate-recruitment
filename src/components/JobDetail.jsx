@@ -301,7 +301,7 @@ const JobDetail = () => {
                 >
                   <div className="flex items-start">
                     <Mail className="h-6 w-6 text-blue-600 mr-3 mt-1 flex-shrink-0" />
-                    <div>
+                    <div className="flex-1">
                       <h3 className="text-lg font-semibold text-blue-900 mb-2">
                         Submit Your Application
                       </h3>
@@ -309,11 +309,17 @@ const JobDetail = () => {
                         To apply for this position, please submit your details and CV to:
                       </p>
                       <div className="bg-white p-4 rounded-lg border border-blue-200">
-                        <p className="text-blue-900 font-medium">
-                          📧 <strong>Email:</strong> <span className="text-azure">admin@consulaterecruitment.co.uk</span>
+                        <p className="text-blue-900 font-medium mb-3">
+                          📧 <strong>Email:</strong>{' '}
+                          <a 
+                            href={`mailto:admin@consulaterecruitment.co.uk?subject=Application for ${encodeURIComponent(job.title)}&body=Dear Consulate Recruitment Team,%0D%0A%0D%0AI am writing to express my interest in the ${encodeURIComponent(job.title)} position at ${encodeURIComponent(job.location)}.%0D%0A%0D%0APlease find my CV attached.%0D%0A%0D%0ABest regards,`}
+                            className="text-azure hover:text-azureSoft underline transition-colors duration-200"
+                          >
+                            admin@consulaterecruitment.co.uk
+                          </a>
                         </p>
-                        <p className="text-sm text-blue-700 mt-2">
-                          Please include the job title "{job.title}" in your email subject line.
+                        <p className="text-sm text-blue-700">
+                          Click the email above to open your mail client with a pre-filled application template.
                         </p>
                       </div>
                       <p className="text-sm text-blue-700 mt-3">

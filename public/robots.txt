@@ -1,0 +1,14 @@
+# robots.txt for Consulate Recruitment
+# https://consulaterecruitment.co.uk
+
+User-agent: *
+Allow: /
+Disallow: /dashboard/
+Disallow: /admin/
+Disallow: /*.json$
+
+# Sitemap location
+Sitemap: https://consulaterecruitment.co.uk/sitemap.xml
+
+# Crawl-delay (optional, helps prevent server overload)
+Crawl-delay: 1

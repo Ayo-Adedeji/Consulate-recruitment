@@ -33,8 +33,8 @@ const CleaningServicesPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // FormSubmit will handle the submission
-    // Form has action and method attributes
+    // If validation passes, submit the form to FormSubmit
+    e.target.submit();
   };
 
   const whenNeeded = [

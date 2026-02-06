@@ -15,10 +15,10 @@ const Clients = () => {
   const hasAnimated = useRef(false);
 
   const targetStats = {
-    clients: 20,
-    projects: 20,
-    satisfaction: 98,
-    years: 4
+    clients: 10,
+    projects: 10,
+    satisfaction: 100,
+    years: 2
   };
 
   const animateStats = () => {
@@ -111,8 +111,8 @@ const Clients = () => {
       icon: <FaTrophy className="w-8 h-8" />,
       number: stats.years,
       suffix: "+",
-      label: "Years Experience",
-      description: "Industry expertise delivered"
+      label: "Decades Combined Experience",
+      description: "Expert team knowledge"
     }
   ];
 

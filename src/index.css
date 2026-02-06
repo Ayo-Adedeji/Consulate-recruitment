@@ -64,6 +64,49 @@ html, body {
   overflow-wrap: break-word;
 }
 
+/* Toast slide-in animation */
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slideInRight {
+  animation: slideInRight 0.3s ease-out;
+}
+
+/* Logo pulse animation */
+@keyframes logoPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.animate-logoPulse {
+  animation: logoPulse 2s ease-in-out infinite;
+}
+
+/* Bounce delays for loading dots */
+.delay-100 {
+  animation-delay: 0.1s;
+}
+
+.delay-200 {
+  animation-delay: 0.2s;
+}
+
+.delay-700 {
+  animation-delay: 0.7s;
+}
+
 /* Ensure containers don't overflow */
 .container, .max-w-7xl, .max-w-6xl, .max-w-5xl, .max-w-4xl, .max-w-3xl, .max-w-2xl, .max-w-xl {
   max-width: calc(100vw - 2rem);

@@ -78,11 +78,11 @@ const Vision = () => {
             </div>
 
             {/* Floating badge */}
-            <div className={`absolute -bottom-6 -right-6 bg-azure text-white px-6 py-3 rounded-full shadow-lg transition-all duration-1000 delay-600 ${
+            {/* <div className={`absolute -bottom-6 -right-6 bg-azure text-white px-6 py-3 rounded-full shadow-lg transition-all duration-1000 delay-600 ${
               isVisible ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
             }`}>
               <span className="text-sm font-semibold">Since 2020</span>
-            </div>
+            </div> */}
           </div>
 
           {/* Enhanced Content Section */}

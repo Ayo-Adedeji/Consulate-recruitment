@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import bg1 from "../assets/bg1.jpg"; 
+import recruiters from "../assets/recruiters.jpg"; 
 import bg2 from "../assets/bg2.jpg"; 
-import bg3 from "../assets/bg3.jpg"; 
+import cleaning_lady from "../assets/cleaning_lady.jpg"; 
 
-const backgrounds = [bg1, bg2, bg3];
+const backgrounds = [recruiters, bg2, cleaning_lady];
 
 const Hero = () => {
   const [current, setCurrent] = useState(0);

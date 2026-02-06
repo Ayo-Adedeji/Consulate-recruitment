@@ -614,7 +614,7 @@ This consultation request was submitted from the Permanent Recruitment page.
                   <div>
                     <p className="text-white/70 text-sm">Call us</p>
                     <a href="tel:+447438733336" className="text-white font-semibold hover:text-yellow-300 transition-colors">
-                      +44 7438 733336
+                      +01623 255223
                     </a>
                   </div>
                 </div>

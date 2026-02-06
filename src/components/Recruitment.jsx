@@ -2,13 +2,13 @@ import React, { useEffect, useRef, useState } from "react";
 import { FaUsers, FaUserTie, FaBroom, FaArrowRight } from "react-icons/fa";
 import cleaning from "../assets/cleaning.jpg";
 import permanent from "../assets/permanent.jpg"; 
-import temporary from "../assets/temporary.jpg";  
+import recruiters from "../assets/recruiters.jpg";  
 
 const recruitmentData = [
   {
     title: "Temporary Recruitment",
     text: "When you need to fill workforce gaps, whether planned or on short notice, we have access to a wide pool of skilled professionals ready to step in when required. Be it covering holidays, managing staff absences, strengthening your team during busy periods or your cleaning support services, our candidates bring the qualifications and experience needed to make an immediate impact.",
-    image: temporary,
+    image: recruiters,
     icon: <FaUsers className="w-8 h-8" />,
     color: "from-blue-500 to-azure",
     buttonLink: "/temporary-recruitment"

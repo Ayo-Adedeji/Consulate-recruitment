@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import { FaBullseye, FaUsers, FaHeart, FaArrowRight, FaCheckCircle } from "react-icons/fa";
-import approachImage from "../assets/approachImage.jpg";
+import approach from "../assets/approach.jpg";
 
 const Approach = () => {
   const sectionRef = useRef(null);
@@ -83,7 +83,7 @@ const Approach = () => {
               <div className="absolute inset-0 bg-gradient-to-br from-azure/20 to-azureSoft/20 rounded-2xl transform rotate-2 group-hover:rotate-3 transition-transform duration-500"></div>
               <div className="relative bg-white p-3 rounded-2xl shadow-xl">
                 <img
-                  src={approachImage}
+                  src={approach}
                   alt="Our Approach"
                   className="w-full h-64 md:h-80 lg:h-96 object-cover rounded-xl transition-transform duration-500 group-hover:scale-105"
                 />

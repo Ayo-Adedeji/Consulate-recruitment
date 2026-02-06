@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
-import visionImage from "../assets/visionImage.jpeg";
+import approachImage from "../assets/approachImage.jpg";
 import { FaEye, FaBullseye, FaUsers, FaArrowRight } from "react-icons/fa";
 
 const Vision = () => {
@@ -68,7 +68,7 @@ const Vision = () => {
               <div className="absolute inset-0 bg-gradient-to-br from-azure/20 to-indigo-300/20 rounded-2xl transform rotate-3 group-hover:rotate-6 transition-transform duration-500"></div>
               <div className="relative bg-white p-3 rounded-2xl shadow-xl">
                 <img
-                  src={visionImage}
+                  src={approachImage}
                   alt="Our Vision"
                   className="w-full h-64 md:h-80 lg:h-96 object-cover rounded-xl transition-transform duration-500 group-hover:scale-105"
                 />

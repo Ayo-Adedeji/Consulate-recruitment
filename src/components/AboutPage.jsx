@@ -29,7 +29,7 @@ import IcoImage from './IcoImage';
 import cleaning from '../assets/cleaning.jpg';
 import permanent from '../assets/permanent.jpg'; 
 import temporary from '../assets/temporary.jpg';
-import visionImage from '../assets/visionImage.jpeg';
+import consulting from '../assets/consulting.jpg';
 
 const AboutPage = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -145,7 +145,7 @@ const AboutPage = () => {
     {
       title: "Management Services",
       description: "We go beyond providing services; we build lasting partnerships. Our team delivers ongoing support to ensure smooth and effective management within your operations. By understanding the complexities of service management, we ensure every solution is aligned with your requirements and fully compliant with industry standards.",
-      image: visionImage,
+      image: consulting,
       icon: <Target className="w-8 h-8 text-azureSoft" />,
       color: 'from-orange-500 to-orange-600'
     }
@@ -189,7 +189,7 @@ const AboutPage = () => {
       name: "Emma Thompson",
       qualifications: "BSc, RN",
       position: "Healthcare Specialist",
-      image: visionImage,
+      image: consulting,
       social: {
         facebook: "#",
         twitter: "#",
@@ -435,7 +435,7 @@ const AboutPage = () => {
             data-animate-id="vision-image"
           >
             <img 
-              src={visionImage} 
+              src={consulting} 
               alt="Our Vision" 
               className="w-full h-64 md:h-96 object-cover"
             />

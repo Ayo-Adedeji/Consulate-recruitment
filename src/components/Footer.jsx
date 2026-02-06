@@ -26,7 +26,7 @@ export default function Footer() {
     { name: "Facebook", icon: FaFacebookF, href: "https://www.facebook.com/consulaterecruitmentagency", color: "hover:bg-blue-600" },
     { name: "Instagram", icon: FaInstagram, href: "https://www.instagram.com/consulaterecruitmentagency/?hl=en", color: "hover:bg-pink-600" },
     { name: "LinkedIn", icon: FaLinkedinIn, href: "https://www.linkedin.com/company/consulate-recruitment-agency/?viewAsMember=true", color: "hover:bg-blue-700" },
-    { name: "YouTube", icon: FaYoutube, href: "https://www.youtube.com/watch?v=RhV8N4PQwgk", color: "hover:bg-red-600" },
+    { name: "YouTube", icon: FaYoutube, href: "https://www.youtube.com/@consulaterecruitment", color: "hover:bg-red-600" },
   ];
 
   return (

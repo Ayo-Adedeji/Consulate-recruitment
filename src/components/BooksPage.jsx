@@ -7,6 +7,9 @@ import findingTruePathway from "../assets/finding-true-pathway.jpeg";
 import bibleNames from "../assets/bible-names.jpeg";
 import love from "../assets/love.jpeg";
 import careGuide from "../assets/care-guide.jpeg";
+import dogs from "../assets/dogs.jpg";
+import pharmacy from "../assets/pharmacy.jpeg";
+import pathways from "../assets/pathways.jpeg";
 
 const books = [
   {
@@ -15,7 +18,8 @@ const books = [
     subtitle: "A Journey Through Addiction, Breakdown, and the Fight for Recovery",
     description: "A powerful memoir exploring the journey through addiction, mental health challenges, and the path to recovery and healing.",
     image: findingTruePathway,
-    bookUrl: "https://consulatebooks.onrender.com/book/finding-true-pathway"
+    bookUrl: "https://consulatebooks.onrender.com/book/finding-true-pathway",
+    amazonUrl: "https://www.amazon.co.uk/Finding-True-Pathway-addiction-breakdown/dp/B0G5JHGWX8/ref=sr_1_1?crid=3N77SLEI32PYC&dib=eyJ2IjoiMSJ9.Nl-tI8HJI5j2H4tsUEghjCpNAOArBcsH6L-SLm-7oGIgkk9XHdJJh_bQgMfiWsOuos1nJ-lgc3VwF0SqLlwb8uAAWTJyW9idmKxIIFSxmJU.o2f8jBKd2lvyGDl0SgGMSYjZjrXCY4dgjHlZtxb_GUw&dib_tag=se&keywords=olafusi+omotiba&qid=1770368315&sprefix=%2Caps%2C106&sr=8-1"
   },
   {
     id: 2,
@@ -23,7 +27,8 @@ const books = [
     subtitle: "Biblical Names & Characters Puzzle Book",
     description: "66 engaging word search puzzles featuring biblical names, characters, and Christian names. Perfect for Sunday school, faith-based learning, and spiritual enrichment. 6x9 format.",
     image: bibleNames,
-    bookUrl: "https://consulatebooks.onrender.com/book/bible-names"
+    bookUrl: "https://consulatebooks.onrender.com/book/bible-names",
+    amazonUrl: "https://www.amazon.co.uk/BIBLE-NAMES-WORD-SEARCH-characters/dp/B0GD6Z7V64/ref=sr_1_5?crid=3N77SLEI32PYC&dib=eyJ2IjoiMSJ9.Nl-tI8HJI5j2H4tsUEghjCpNAOArBcsH6L-SLm-7oGIgkk9XHdJJh_bQgMfiWsOuos1nJ-lgc3VwF0SqLlwb8uAAWTJyW9idmKxIIFSxmJU.o2f8jBKd2lvyGDl0SgGMSYjZjrXCY4dgjHlZtxb_GUw&dib_tag=se&keywords=olafusi+omotiba&qid=1770368315&sprefix=%2Caps%2C106&sr=8-5"
   },
   {
     id: 3,
@@ -31,7 +36,8 @@ const books = [
     subtitle: "Valentine Word Search Inspired By Cultures Around the World",
     description: "A thoughtful puzzle book celebrating love across cultures. Perfect for adults, teens, educators, and gift buyers. 6x9 format with relaxing and engaging word searches.",
     image: love,
-    bookUrl: "https://consulatebooks.onrender.com/book/love-without-borders"
+    bookUrl: "https://consulatebooks.onrender.com/book/love-without-borders",
+    amazonUrl: "https://www.amazon.co.uk/Love-Without-Boarders-Valentine-Thoughtful/dp/B0GCLFN815/ref=sr_1_4?crid=3N77SLEI32PYC&dib=eyJ2IjoiMSJ9.Nl-tI8HJI5j2H4tsUEghjCpNAOArBcsH6L-SLm-7oGIgkk9XHdJJh_bQgMfiWsOuos1nJ-lgc3VwF0SqLlwb8uAAWTJyW9idmKxIIFSxmJU.o2f8jBKd2lvyGDl0SgGMSYjZjrXCY4dgjHlZtxb_GUw&dib_tag=se&keywords=olafusi+omotiba&qid=1770368315&sprefix=%2Caps%2C106&sr=8-4"
   },
   {
     id: 4,
@@ -39,7 +45,35 @@ const books = [
     subtitle: "Enhancing Skills, Avoiding Mistakes, Delivering Outstanding Care",
     description: "Essential guidance for care and support workers in health and social care. Learn to enhance your skills, avoid common mistakes, and deliver exceptional care to those who need it most.",
     image: careGuide,
-    bookUrl: "https://consulatebooks.onrender.com/book/practical-guide"
+    bookUrl: "https://consulatebooks.onrender.com/book/practical-guide",
+    amazonUrl: "https://www.amazon.co.uk/Practical-Support-Workers-Health-Social-ebook/dp/B0GC9XLH5P/ref=sr_1_2?crid=3N77SLEI32PYC&dib=eyJ2IjoiMSJ9.Nl-tI8HJI5j2H4tsUEghjCpNAOArBcsH6L-SLm-7oGIgkk9XHdJJh_bQgMfiWsOuos1nJ-lgc3VwF0SqLlwb8uAAWTJyW9idmKxIIFSxmJU.o2f8jBKd2lvyGDl0SgGMSYjZjrXCY4dgjHlZtxb_GUw&dib_tag=se&keywords=olafusi+omotiba&qid=1770368315&sprefix=%2Caps%2C106&sr=8-2"
+  },
+  {
+    id: 5,
+    title: "Pharmacy Politics in Nigeria",
+    subtitle: "Practical and action-oriented, it offers clear pathways for pharmacists to gain political influence through professional leadership, party politics, appointments, legislative advocacy, and strategic networking.",
+    description: "Pharmacy Politics in Nigeria reveals the hidden power dynamics shaping pharmaceutical practice, regulation, and health policy in Nigeria—and why pharmacists are often excluded from decision-making.",
+    image: pharmacy,
+    // bookUrl: "https://consulatebooks.onrender.com/book/practical-guide"
+    // amazonUrl: "https://www.amazon.co.uk/Pharmacy-Politics-Nigeria-Practical-Action-Oriented/dp/B0G9237854/ref=sr_1_1?crid=3N77SLEI32PYC&dib=eyJ2IjoiMSJ9.Nl-tI8HJI5j2H4tsUEghjCpNAOArBcsH6L-SLm-7oGIgkk9XHdJJh_bQgMfiWsOuos1nJ-lgc3VwF0SqLlwb8uAAWTJyW9idmKxIIFSxmJU.o2f8jBKd2lvyGDl0SgGMSYjZjrXCY4dgjHlZtxb_GUw&dib_tag=se&keywords=olafusi+omotiba&qid=1770368315&sprefix=%2Caps%2C106&sr=8-1"
+  },
+  {
+    id: 6,
+    title: "Pathways to overcome anxiety and depression",
+    subtitle: "Take Control, Break the Cycle, Heal, Grow, And Thrive.",
+    description: "Pathways to Overcome Anxiety and Depression is a hands-on, compassionate guide for anyone navigating the pressures of the modern world. ",
+    image: pathways,
+    amazonUrl: "https://www.amazon.co.uk/dp/B0GLFGC99N/ref=sr_1_3?crid=3N77SLEI32PYC&dib=eyJ2IjoiMSJ9.Nl-tI8HJI5j2H4tsUEghjCpNAOArBcsH6L-SLm-7oGIgkk9XHdJJh_bQgMfiWsOuos1nJ-lgc3VwF0SqLlwb8uAAWTJyW9idmKxIIFSxmJU.o2f8jBKd2lvyGDl0SgGMSYjZjrXCY4dgjHlZtxb_GUw&dib_tag=se&keywords=olafusi+omotiba&qid=1770368315&sprefix=%2Caps%2C106&sr=8-3"
+    // bookUrl: "https://consulatebooks.onrender.com/book/practical-guide"
+  },
+  {
+    id: 7,
+    title: "Dogs Fans",
+    subtitle: "Dog Fans word search Puzzles Book: Word Puzzle searches with easy to read print about dogs fans",
+    description: "Dog Fans word search Puzzles Book: Word Puzzle searches with easy to read print about dogs fans and. 6x9 inches, 55+ puzzles...The perfect gift for dog fans of children, teens and adult.",
+    image: dogs,
+    amazonUrl: "https://www.amazon.co.uk/Fans-word-search-Puzzles-Book/dp/B0GB7GBKSR/ref=sr_1_6?crid=3N77SLEI32PYC&dib=eyJ2IjoiMSJ9.Nl-tI8HJI5j2H4tsUEghjCpNAOArBcsH6L-SLm-7oGIgkk9XHdJJh_bQgMfiWsOuos1nJ-lgc3VwF0SqLlwb8uAAWTJyW9idmKxIIFSxmJU.o2f8jBKd2lvyGDl0SgGMSYjZjrXCY4dgjHlZtxb_GUw&dib_tag=se&keywords=olafusi+omotiba&qid=1770368315&sprefix=%2Caps%2C106&sr=8-6"
+    // bookUrl: "https://consulatebooks.onrender.com/book/practical-guide"
   },
 ];
 
@@ -159,7 +193,7 @@ export default function BooksPage() {
                 About the <span className="text-azure">Author</span>
               </h2>
               <p className="text-primary/80 leading-relaxed mb-4">
-                Olafusi Omotiba is a public health pharmacist and mental health advocate dedicated to 
+                Olafusi Omotiba is a public health pharmacist, business manager, author and mental health advocate dedicated to 
                 supporting individuals facing addiction and emotional challenges.
               </p>
               <p className="text-primary/80 leading-relaxed mb-4">
@@ -246,7 +280,7 @@ export default function BooksPage() {
                         View Book Details
                       </a>
                       <a
-                        href="https://www.amazon.co.uk/s?k=olafusi+omotiba&crid=3N77SLEI32PYC&sprefix=%2Caps%2C106&ref=nb_sb_ss_recent_1_0_recent"
+                        href={book.amazonUrl}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center justify-center gap-2 bg-[#FF9900] hover:bg-[#FF9900]/90 text-white px-5 py-3 rounded-lg font-semibold transition-all duration-300 shadow-md hover:shadow-lg"

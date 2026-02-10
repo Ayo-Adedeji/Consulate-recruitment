@@ -10,6 +10,7 @@ import careGuide from "../assets/care-guide.jpeg";
 import dogs from "../assets/dogs.jpg";
 import pharmacy from "../assets/pharmacy.jpeg";
 import pathways from "../assets/pathways.jpeg";
+import Power from "../assets/Power.jpeg";
 
 const books = [
   {
@@ -54,8 +55,8 @@ const books = [
     subtitle: "Practical and action-oriented, it offers clear pathways for pharmacists to gain political influence through professional leadership, party politics, appointments, legislative advocacy, and strategic networking.",
     description: "Pharmacy Politics in Nigeria reveals the hidden power dynamics shaping pharmaceutical practice, regulation, and health policy in Nigeria—and why pharmacists are often excluded from decision-making.",
     image: pharmacy,
-    // bookUrl: "https://consulatebooks.onrender.com/book/practical-guide"
-    // amazonUrl: "https://www.amazon.co.uk/Pharmacy-Politics-Nigeria-Practical-Action-Oriented/dp/B0G9237854/ref=sr_1_1?crid=3N77SLEI32PYC&dib=eyJ2IjoiMSJ9.Nl-tI8HJI5j2H4tsUEghjCpNAOArBcsH6L-SLm-7oGIgkk9XHdJJh_bQgMfiWsOuos1nJ-lgc3VwF0SqLlwb8uAAWTJyW9idmKxIIFSxmJU.o2f8jBKd2lvyGDl0SgGMSYjZjrXCY4dgjHlZtxb_GUw&dib_tag=se&keywords=olafusi+omotiba&qid=1770368315&sprefix=%2Caps%2C106&sr=8-1"
+    bookUrl: "https://consulatebooks.onrender.com/book/pharmacy-politics-in-nigeria",
+    amazonUrl: "https://www.amazon.co.uk/dp/B0GMBBVX2N/ref=sr_1_2?crid=3N77SLEI32PYC&dib=eyJ2IjoiMSJ9.SCRrogL_TJHuY8SxdqoNb5pbDPy6W66mgAioYFaR4A5GcXiiLoXqSK2lWwcXO-J0NA0UXtf6c5USm7_6bLgXY7KV-9qku0zUefTeN9cDLwk.XhW1TsYgYxB0hv3a3P249a6XfhFqtUnc7NINN3zCDuE&dib_tag=se&keywords=olafusi+omotiba&qid=1770711793&sprefix=%2Caps%2C106&sr=8-2"
   },
   {
     id: 6,
@@ -63,8 +64,8 @@ const books = [
     subtitle: "Take Control, Break the Cycle, Heal, Grow, And Thrive.",
     description: "Pathways to Overcome Anxiety and Depression is a hands-on, compassionate guide for anyone navigating the pressures of the modern world. ",
     image: pathways,
-    amazonUrl: "https://www.amazon.co.uk/dp/B0GLFGC99N/ref=sr_1_3?crid=3N77SLEI32PYC&dib=eyJ2IjoiMSJ9.Nl-tI8HJI5j2H4tsUEghjCpNAOArBcsH6L-SLm-7oGIgkk9XHdJJh_bQgMfiWsOuos1nJ-lgc3VwF0SqLlwb8uAAWTJyW9idmKxIIFSxmJU.o2f8jBKd2lvyGDl0SgGMSYjZjrXCY4dgjHlZtxb_GUw&dib_tag=se&keywords=olafusi+omotiba&qid=1770368315&sprefix=%2Caps%2C106&sr=8-3"
-    // bookUrl: "https://consulatebooks.onrender.com/book/practical-guide"
+    amazonUrl: "https://www.amazon.co.uk/dp/B0GLFGC99N/ref=sr_1_3?crid=3N77SLEI32PYC&dib=eyJ2IjoiMSJ9.Nl-tI8HJI5j2H4tsUEghjCpNAOArBcsH6L-SLm-7oGIgkk9XHdJJh_bQgMfiWsOuos1nJ-lgc3VwF0SqLlwb8uAAWTJyW9idmKxIIFSxmJU.o2f8jBKd2lvyGDl0SgGMSYjZjrXCY4dgjHlZtxb_GUw&dib_tag=se&keywords=olafusi+omotiba&qid=1770368315&sprefix=%2Caps%2C106&sr=8-3",
+    bookUrl: "https://consulatebooks.onrender.com/book/pathways-to-overcome-anxiety-and-depression"
   },
   {
     id: 7,
@@ -72,8 +73,17 @@ const books = [
     subtitle: "Dog Fans word search Puzzles Book: Word Puzzle searches with easy to read print about dogs fans",
     description: "Dog Fans word search Puzzles Book: Word Puzzle searches with easy to read print about dogs fans and. 6x9 inches, 55+ puzzles...The perfect gift for dog fans of children, teens and adult.",
     image: dogs,
-    amazonUrl: "https://www.amazon.co.uk/Fans-word-search-Puzzles-Book/dp/B0GB7GBKSR/ref=sr_1_6?crid=3N77SLEI32PYC&dib=eyJ2IjoiMSJ9.Nl-tI8HJI5j2H4tsUEghjCpNAOArBcsH6L-SLm-7oGIgkk9XHdJJh_bQgMfiWsOuos1nJ-lgc3VwF0SqLlwb8uAAWTJyW9idmKxIIFSxmJU.o2f8jBKd2lvyGDl0SgGMSYjZjrXCY4dgjHlZtxb_GUw&dib_tag=se&keywords=olafusi+omotiba&qid=1770368315&sprefix=%2Caps%2C106&sr=8-6"
-    // bookUrl: "https://consulatebooks.onrender.com/book/practical-guide"
+    amazonUrl: "https://www.amazon.co.uk/Fans-word-search-Puzzles-Book/dp/B0GB7GBKSR/ref=sr_1_6?crid=3N77SLEI32PYC&dib=eyJ2IjoiMSJ9.Nl-tI8HJI5j2H4tsUEghjCpNAOArBcsH6L-SLm-7oGIgkk9XHdJJh_bQgMfiWsOuos1nJ-lgc3VwF0SqLlwb8uAAWTJyW9idmKxIIFSxmJU.o2f8jBKd2lvyGDl0SgGMSYjZjrXCY4dgjHlZtxb_GUw&dib_tag=se&keywords=olafusi+omotiba&qid=1770368315&sprefix=%2Caps%2C106&sr=8-6",
+    bookUrl: "https://consulatebooks.onrender.com/book/dogs-fans"
+  },
+  {
+    id: 8,
+    title: "The Power of Modern Entrepreneurship",
+    subtitle: "How to turn Skills into Income, Build True Wealth and create a Meaningful Legacy",
+    description: "The Power of Modern Entrepreneurship is a powerful and practical guide to entrepreneurship, wealth creation, and purposeful living. It is written for anyone who wants to rise from limited beginnings and build lasting success through discipline, skills, and integrity.",
+    image: Power,
+    // amazonUrl: "https://www.amazon.co.uk/Fans-word-search-Puzzles-Book/dp/B0GB7GBKSR/ref=sr_1_6?crid=3N77SLEI32PYC&dib=eyJ2IjoiMSJ9.Nl-tI8HJI5j2H4tsUEghjCpNAOArBcsH6L-SLm-7oGIgkk9XHdJJh_bQgMfiWsOuos1nJ-lgc3VwF0SqLlwb8uAAWTJyW9idmKxIIFSxmJU.o2f8jBKd2lvyGDl0SgGMSYjZjrXCY4dgjHlZtxb_GUw&dib_tag=se&keywords=olafusi+omotiba&qid=1770368315&sprefix=%2Caps%2C106&sr=8-6"
+    bookUrl: "https://consulatebooks.onrender.com/book/the-power-of-modern-entrepreneurship"
   },
 ];
 

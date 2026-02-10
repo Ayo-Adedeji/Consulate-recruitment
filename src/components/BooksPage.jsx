@@ -82,7 +82,7 @@ const books = [
     subtitle: "How to turn Skills into Income, Build True Wealth and create a Meaningful Legacy",
     description: "The Power of Modern Entrepreneurship is a powerful and practical guide to entrepreneurship, wealth creation, and purposeful living. It is written for anyone who wants to rise from limited beginnings and build lasting success through discipline, skills, and integrity.",
     image: Power,
-    // amazonUrl: "https://www.amazon.co.uk/Fans-word-search-Puzzles-Book/dp/B0GB7GBKSR/ref=sr_1_6?crid=3N77SLEI32PYC&dib=eyJ2IjoiMSJ9.Nl-tI8HJI5j2H4tsUEghjCpNAOArBcsH6L-SLm-7oGIgkk9XHdJJh_bQgMfiWsOuos1nJ-lgc3VwF0SqLlwb8uAAWTJyW9idmKxIIFSxmJU.o2f8jBKd2lvyGDl0SgGMSYjZjrXCY4dgjHlZtxb_GUw&dib_tag=se&keywords=olafusi+omotiba&qid=1770368315&sprefix=%2Caps%2C106&sr=8-6"
+    amazonUrl: "https://www.amazon.co.uk/dp/B0GMJVKGRB/ref=mp_s_a_1_4?crid=1S3U1QAF6F8MT&dib=eyJ2IjoiMSJ9.FalU4jkdZ_ygBTBGMVPO5HaZYS8Rn4rcp6nJvUXWkAmHDbghmXLD0ILZ_xw-1p4qtqxYSBkw3QdPUVs56BDz7qEJtz3sLsPuzqATM4rXoeaBctlLcwFJPEAZdYTqV9dkssMYBcvn2HywDuFRPQAsNQ.Bif0x3X3VFNWCpZ_ZoyMNYHIm3iHTqL4kuMMREiIFe4&dib_tag=se&keywords=Olafusi+omotiba&qid=1770712781&s=books&sprefix=Olafusi+omotiba+%2Cbooks%2C92&sr=1-4",
     bookUrl: "https://consulatebooks.onrender.com/book/the-power-of-modern-entrepreneurship"
   },
 ];

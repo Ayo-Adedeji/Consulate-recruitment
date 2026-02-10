@@ -28,7 +28,7 @@ const books = [
     subtitle: "Biblical Names & Characters Puzzle Book",
     description: "66 engaging word search puzzles featuring biblical names, characters, and Christian names. Perfect for Sunday school, faith-based learning, and spiritual enrichment. 6x9 format.",
     image: bibleNames,
-    bookUrl: "https://consulatebooks.onrender.com/book/bible-names",
+    // bookUrl: "https://consulatebooks.onrender.com/book/bible-names",
     amazonUrl: "https://www.amazon.co.uk/BIBLE-NAMES-WORD-SEARCH-characters/dp/B0GD6Z7V64/ref=sr_1_5?crid=3N77SLEI32PYC&dib=eyJ2IjoiMSJ9.Nl-tI8HJI5j2H4tsUEghjCpNAOArBcsH6L-SLm-7oGIgkk9XHdJJh_bQgMfiWsOuos1nJ-lgc3VwF0SqLlwb8uAAWTJyW9idmKxIIFSxmJU.o2f8jBKd2lvyGDl0SgGMSYjZjrXCY4dgjHlZtxb_GUw&dib_tag=se&keywords=olafusi+omotiba&qid=1770368315&sprefix=%2Caps%2C106&sr=8-5"
   },
   {
@@ -37,7 +37,7 @@ const books = [
     subtitle: "Valentine Word Search Inspired By Cultures Around the World",
     description: "A thoughtful puzzle book celebrating love across cultures. Perfect for adults, teens, educators, and gift buyers. 6x9 format with relaxing and engaging word searches.",
     image: love,
-    bookUrl: "https://consulatebooks.onrender.com/book/love-without-borders",
+    // bookUrl: "https://consulatebooks.onrender.com/book/love-without-borders",
     amazonUrl: "https://www.amazon.co.uk/Love-Without-Boarders-Valentine-Thoughtful/dp/B0GCLFN815/ref=sr_1_4?crid=3N77SLEI32PYC&dib=eyJ2IjoiMSJ9.Nl-tI8HJI5j2H4tsUEghjCpNAOArBcsH6L-SLm-7oGIgkk9XHdJJh_bQgMfiWsOuos1nJ-lgc3VwF0SqLlwb8uAAWTJyW9idmKxIIFSxmJU.o2f8jBKd2lvyGDl0SgGMSYjZjrXCY4dgjHlZtxb_GUw&dib_tag=se&keywords=olafusi+omotiba&qid=1770368315&sprefix=%2Caps%2C106&sr=8-4"
   },
   {
@@ -73,8 +73,9 @@ const books = [
     subtitle: "Dog Fans word search Puzzles Book: Word Puzzle searches with easy to read print about dogs fans",
     description: "Dog Fans word search Puzzles Book: Word Puzzle searches with easy to read print about dogs fans and. 6x9 inches, 55+ puzzles...The perfect gift for dog fans of children, teens and adult.",
     image: dogs,
-    amazonUrl: "https://www.amazon.co.uk/Fans-word-search-Puzzles-Book/dp/B0GB7GBKSR/ref=sr_1_6?crid=3N77SLEI32PYC&dib=eyJ2IjoiMSJ9.Nl-tI8HJI5j2H4tsUEghjCpNAOArBcsH6L-SLm-7oGIgkk9XHdJJh_bQgMfiWsOuos1nJ-lgc3VwF0SqLlwb8uAAWTJyW9idmKxIIFSxmJU.o2f8jBKd2lvyGDl0SgGMSYjZjrXCY4dgjHlZtxb_GUw&dib_tag=se&keywords=olafusi+omotiba&qid=1770368315&sprefix=%2Caps%2C106&sr=8-6",
-    bookUrl: "https://consulatebooks.onrender.com/book/dogs-fans"
+    // bookUrl: "https://consulatebooks.onrender.com/book/dogs-fans",
+    amazonUrl: "https://www.amazon.co.uk/Fans-word-search-Puzzles-Book/dp/B0GB7GBKSR/ref=sr_1_6?crid=3N77SLEI32PYC&dib=eyJ2IjoiMSJ9.Nl-tI8HJI5j2H4tsUEghjCpNAOArBcsH6L-SLm-7oGIgkk9XHdJJh_bQgMfiWsOuos1nJ-lgc3VwF0SqLlwb8uAAWTJyW9idmKxIIFSxmJU.o2f8jBKd2lvyGDl0SgGMSYjZjrXCY4dgjHlZtxb_GUw&dib_tag=se&keywords=olafusi+omotiba&qid=1770368315&sprefix=%2Caps%2C106&sr=8-6"
+    
   },
   {
     id: 8,

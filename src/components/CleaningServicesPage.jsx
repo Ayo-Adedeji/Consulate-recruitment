@@ -97,11 +97,11 @@ const CleaningServicesPage = () => {
 
   const deliverables = [
     { image: frame1, caption: 'Bedroom Cleaning' },
-    { image: frame2, caption: 'Living Room Cleaning' },
-    { image: frame3, caption: 'Kitchen Cleaning' },
+    { image: frame2, caption: 'Guest Room Cleaning' },
+    { image: frame3, caption: 'Living Room Cleaning' },
     { image: frame4, caption: 'Appliance Cleaning' },
     { image: frame5, caption: 'Deep Cleaning' },
-    { image: frame6, caption: 'Office Cleaning' },
+    { image: frame6, caption: 'Post-Tenancy Cleaning' },
   ];
 
   return (
@@ -168,8 +168,35 @@ const CleaningServicesPage = () => {
         </div>
       </section>
 
-      {/* Our Solutions */}
+      {/* Our Deliverables */}
       <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-12" data-animate>
+            <div className="inline-flex items-center px-4 py-2 bg-azure/10 text-azure text-sm font-medium rounded-full mb-4">Our Work</div>
+            <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-4">Our Deliverables</h2>
+            <p className="text-lg text-primary/70 max-w-2xl mx-auto">A glimpse of the spaces we transform — clean, safe, and ready for use.</p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {deliverables.map((item, index) => (
+              <div key={index} data-animate className={`group rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 stagger-${index + 1}`}>
+                <div className="overflow-hidden h-56">
+                  <img
+                    src={item.image}
+                    alt={item.caption}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+                <div className="bg-gradient-to-br from-azure/5 to-primaryLight/5 border border-azure/10 px-5 py-4">
+                  <p className="text-primary font-semibold text-center">{item.caption}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Our Solutions */}
+      <section className="py-20 bg-gradient-to-br from-bg via-white to-blue-50">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-12" data-animate>
             <div className="inline-flex items-center px-4 py-2 bg-azure/10 text-azure text-sm font-medium rounded-full mb-4">Our Solutions</div>
@@ -214,33 +241,6 @@ const CleaningServicesPage = () => {
                 </div>
               );
             })}
-          </div>
-        </div>
-      </section>
-
-      {/* Our Deliverables */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-12" data-animate>
-            <div className="inline-flex items-center px-4 py-2 bg-azure/10 text-azure text-sm font-medium rounded-full mb-4">Our Work</div>
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-4">Our Deliverables</h2>
-            <p className="text-lg text-primary/70 max-w-2xl mx-auto">A glimpse of the spaces we transform — clean, safe, and ready for use.</p>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {deliverables.map((item, index) => (
-              <div key={index} data-animate className={`group rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 stagger-${index + 1}`}>
-                <div className="overflow-hidden h-56">
-                  <img
-                    src={item.image}
-                    alt={item.caption}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
-                <div className="bg-gradient-to-br from-azure/5 to-primaryLight/5 border border-azure/10 px-5 py-4">
-                  <p className="text-primary font-semibold text-center">{item.caption}</p>
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </section>

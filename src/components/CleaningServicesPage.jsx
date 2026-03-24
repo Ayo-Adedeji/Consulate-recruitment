@@ -6,6 +6,13 @@ import {
 } from 'lucide-react';
 import Navbar from './Navbar';
 import Footer from './Footer';
+import cleaningBg from '../assets/cleaning_lady.jpg';
+import frame1 from '../assets/frame1.jpeg';
+import frame2 from '../assets/frame2.jpeg';
+import frame3 from '../assets/frame3.jpeg';
+import frame4 from '../assets/frame4.jpeg';
+import frame5 from '../assets/frame5.jpeg';
+import frame6 from '../assets/frame6.jpeg';
 
 const CleaningServicesPage = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -33,7 +40,6 @@ const CleaningServicesPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // If validation passes, submit the form to FormSubmit
     e.target.submit();
   };
 
@@ -89,6 +95,15 @@ const CleaningServicesPage = () => {
     { quote: "We've been using their cleaning services for over a year. The consistency and quality have been outstanding, and they're always responsive to our needs.", author: "David Chen", role: "Operations Director", company: "Metro Office Solutions", rating: 5 }
   ];
 
+  const deliverables = [
+    { image: frame1, caption: 'Bedroom Cleaning' },
+    { image: frame2, caption: 'Living Room Cleaning' },
+    { image: frame3, caption: 'Kitchen Cleaning' },
+    { image: frame4, caption: 'Appliance Cleaning' },
+    { image: frame5, caption: 'Deep Cleaning' },
+    { image: frame6, caption: 'Office Cleaning' },
+  ];
+
   return (
     <div className="min-h-screen bg-white">
       <Navbar />
@@ -100,40 +115,41 @@ const CleaningServicesPage = () => {
         .stagger-5 { transition-delay: 0.5s; } .stagger-6 { transition-delay: 0.6s; }
       `}</style>
 
-      <section className="pt-32 pb-20 bg-gradient-to-br from-azure via-azureSoft to-primary relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-20 left-10 w-40 h-40 bg-white rounded-full blur-3xl animate-float"></div>
-          <div className="absolute bottom-20 right-10 w-48 h-48 bg-accent rounded-full blur-3xl animate-float-delayed"></div>
-        </div>
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <div className="text-center">
-            <div className={`inline-flex items-center px-4 py-2 bg-white/20 text-white rounded-full text-sm font-medium mb-6 backdrop-blur-sm transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-              <Sparkles className="w-4 h-4 mr-2" />Professional Cleaning Services
-            </div>
-            <h1 className={`text-3xl md:text-5xl font-heading font-bold text-white mb-6 leading-tight transition-all duration-1000 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
-              Professional Cleaning Services<span className="block text-yellow-300 mt-2">You Can Rely On</span>
-            </h1>
-            <p className={`text-lg md:text-xl text-white/90 max-w-4xl mx-auto leading-relaxed mb-8 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
-              Reliable, high-quality cleaning support to maintain safe, hygienic, and well-managed environments. Cleaning support ensures consistency, safety, and compliance without disruption to daily operations.
-            </p>
-            <div className={`flex flex-col sm:flex-row gap-4 justify-center transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
-              <a href="#contact" className="inline-flex items-center px-8 py-4 bg-white text-azure font-semibold rounded-xl hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
-                Request Cleaning Support<ArrowRight className="ml-2 w-5 h-5" />
-              </a>
-              <a href="#services" className="inline-flex items-center px-8 py-4 bg-transparent border-2 border-white text-white font-semibold rounded-xl hover:bg-white hover:text-azure transition-all duration-300">
-                View Our Services
-              </a>
-            </div>
+      {/* Hero Section — background image with dark overlay */}
+      <section
+        className="relative min-h-[85vh] flex items-center justify-center text-center overflow-hidden bg-cover bg-center mt-24"
+        style={{ backgroundImage: `url(${cleaningBg})` }}
+      >
+        <div className="absolute inset-0 bg-black/50"></div>
+        <div className="relative z-10 max-w-4xl mx-auto px-6 py-20">
+          <div className={`inline-flex items-center px-4 py-2 bg-white/20 text-white rounded-full text-sm font-medium mb-6 backdrop-blur-sm transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+            <Sparkles className="w-4 h-4 mr-2" />Professional Cleaning Services
+          </div>
+          <h1 className={`text-3xl md:text-5xl font-heading font-bold text-white mb-6 leading-tight transition-all duration-1000 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
+            Professional Cleaning Services
+            <span className="block text-yellow-300 mt-2">You Can Rely On</span>
+          </h1>
+          <p className={`text-lg md:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed mb-8 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
+            Reliable, high-quality cleaning support to maintain safe, hygienic, and well-managed environments — without disruption to your daily operations.
+          </p>
+          <div className={`flex flex-col sm:flex-row gap-4 justify-center transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
+            <a href="#contact" className="inline-flex items-center px-8 py-4 bg-white text-azure font-semibold rounded-xl hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+              Request Cleaning Support<ArrowRight className="ml-2 w-5 h-5" />
+            </a>
+            <a href="#services" className="inline-flex items-center px-8 py-4 bg-transparent border-2 border-white text-white font-semibold rounded-xl hover:bg-white hover:text-azure transition-all duration-300">
+              View Our Services
+            </a>
           </div>
         </div>
       </section>
 
+      {/* When You Need Us */}
       <section className="py-20 bg-gradient-to-br from-bg via-white to-blue-50">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-12" data-animate>
             <div className="inline-flex items-center px-4 py-2 bg-azure/10 text-azure text-sm font-medium rounded-full mb-4">When You Need Us</div>
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-6">When Our Cleaning Services Are Needed</h2>
-            <p className="text-lg text-primary/70 max-w-3xl mx-auto">Professional cleaning support for every situation, ensuring your spaces remain clean, safe, and welcoming.</p>
+            <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-4">When Our Cleaning Services Are Needed</h2>
+            <p className="text-lg text-primary/70 max-w-2xl mx-auto">Professional cleaning support for every situation — keeping your spaces clean, safe, and welcoming.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
             {whenNeeded.map((item, index) => {
@@ -152,12 +168,13 @@ const CleaningServicesPage = () => {
         </div>
       </section>
 
+      {/* Our Solutions */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-12" data-animate>
             <div className="inline-flex items-center px-4 py-2 bg-azure/10 text-azure text-sm font-medium rounded-full mb-4">Our Solutions</div>
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-6">Our Cleaning Service Solution</h2>
-            <p className="text-lg text-primary/70 max-w-3xl mx-auto">What makes our cleaning service dependable, professional, and trusted by organizations across sectors.</p>
+            <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-4">Our Cleaning Service Solution</h2>
+            <p className="text-lg text-primary/70 max-w-2xl mx-auto">What makes our cleaning service dependable, professional, and trusted across sectors.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
             {serviceSolutions.map((solution, index) => {
@@ -176,12 +193,13 @@ const CleaningServicesPage = () => {
         </div>
       </section>
 
+      {/* Service Types */}
       <section id="services" className="py-20 bg-gradient-to-br from-bg via-white to-blue-50">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-12" data-animate>
             <div className="inline-flex items-center px-4 py-2 bg-azure/10 text-azure text-sm font-medium rounded-full mb-4">Service Types</div>
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-6">Types of Cleaning Services We Provide</h2>
-            <p className="text-lg text-primary/70 max-w-3xl mx-auto">Comprehensive cleaning solutions tailored to your specific environment and requirements.</p>
+            <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-4">Types of Cleaning Services We Provide</h2>
+            <p className="text-lg text-primary/70 max-w-2xl mx-auto">Comprehensive cleaning solutions tailored to your environment and requirements.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
             {cleaningTypes.map((type, index) => {
@@ -200,18 +218,46 @@ const CleaningServicesPage = () => {
         </div>
       </section>
 
+      {/* Our Deliverables */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-12" data-animate>
+            <div className="inline-flex items-center px-4 py-2 bg-azure/10 text-azure text-sm font-medium rounded-full mb-4">Our Work</div>
+            <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-4">Our Deliverables</h2>
+            <p className="text-lg text-primary/70 max-w-2xl mx-auto">A glimpse of the spaces we transform — clean, safe, and ready for use.</p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {deliverables.map((item, index) => (
+              <div key={index} data-animate className={`group rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 stagger-${index + 1}`}>
+                <div className="overflow-hidden h-56">
+                  <img
+                    src={item.image}
+                    alt={item.caption}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+                <div className="bg-gradient-to-br from-azure/5 to-primaryLight/5 border border-azure/10 px-5 py-4">
+                  <p className="text-primary font-semibold text-center">{item.caption}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* How It Works */}
+      <section className="py-20 bg-gradient-to-br from-bg via-white to-blue-50">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-12" data-animate>
             <div className="inline-flex items-center px-4 py-2 bg-azure/10 text-azure text-sm font-medium rounded-full mb-4">Our Process</div>
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-6">How Our Cleaning Service Works</h2>
-            <p className="text-lg text-primary/70 max-w-3xl mx-auto">A clear, structured approach to delivering consistent, high-quality cleaning services.</p>
+            <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-4">How Our Cleaning Service Works</h2>
+            <p className="text-lg text-primary/70 max-w-2xl mx-auto">A clear, structured approach to delivering consistent, high-quality cleaning services.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
             {processSteps.map((step, index) => {
               const Icon = step.icon;
               return (
-                <div key={index} data-animate className={`bg-gradient-to-br from-azure/5 to-primaryLight/5 p-6 rounded-xl border border-azure/10 hover:border-azure/30 transition-all duration-300 hover:shadow-lg stagger-${index + 1}`}>
+                <div key={index} data-animate className={`bg-white p-6 rounded-xl border border-azure/10 hover:border-azure/30 transition-all duration-300 hover:shadow-lg stagger-${index + 1}`}>
                   <div className="w-12 h-12 bg-gradient-to-br from-azure to-primaryLight rounded-lg flex items-center justify-center mb-4">
                     <Icon className="w-6 h-6 text-white" />
                   </div>
@@ -224,18 +270,19 @@ const CleaningServicesPage = () => {
         </div>
       </section>
 
-      <section className="py-20 bg-gradient-to-br from-bg via-white to-blue-50">
+      {/* Quality Standards */}
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-12" data-animate>
             <div className="inline-flex items-center px-4 py-2 bg-azure/10 text-azure text-sm font-medium rounded-full mb-4">Quality Assurance</div>
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-6">Quality, Safety & Standards</h2>
-            <p className="text-lg text-primary/70 max-w-3xl mx-auto">Our commitment to excellence, compliance, and trust in every cleaning service we provide.</p>
+            <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-4">Quality, Safety & Standards</h2>
+            <p className="text-lg text-primary/70 max-w-2xl mx-auto">Our commitment to excellence, compliance, and trust in every service we deliver.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
             {qualityStandards.map((standard, index) => {
               const Icon = standard.icon;
               return (
-                <div key={index} data-animate className={`bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border border-azure/10 hover:border-azure/30 group stagger-${index + 1}`}>
+                <div key={index} data-animate className={`bg-gradient-to-br from-azure/5 to-primaryLight/5 p-6 rounded-xl border border-azure/10 hover:border-azure/30 transition-all duration-300 hover:shadow-lg group stagger-${index + 1}`}>
                   <div className="w-12 h-12 bg-gradient-to-br from-azure to-primaryLight rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
                     <Icon className="w-6 h-6 text-white" />
                   </div>
@@ -248,18 +295,19 @@ const CleaningServicesPage = () => {
         </div>
       </section>
 
-      <section className="py-20 bg-white">
+      {/* Benefits */}
+      <section className="py-20 bg-gradient-to-br from-bg via-white to-blue-50">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-12" data-animate>
             <div className="inline-flex items-center px-4 py-2 bg-azure/10 text-azure text-sm font-medium rounded-full mb-4">Client Benefits</div>
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-6">Benefits to Your Organisation</h2>
-            <p className="text-lg text-primary/70 max-w-3xl mx-auto">Value-driven outcomes that make a real difference to your operations and environment.</p>
+            <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-4">Benefits to Your Organisation</h2>
+            <p className="text-lg text-primary/70 max-w-2xl mx-auto">Value-driven outcomes that make a real difference to your operations and environment.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {benefits.map((benefit, index) => {
               const Icon = benefit.icon;
               return (
-                <div key={index} data-animate className={`bg-gradient-to-br from-azure/5 to-primaryLight/5 p-6 rounded-xl border border-azure/10 hover:border-azure/30 transition-all duration-300 hover:shadow-lg stagger-${index + 1}`}>
+                <div key={index} data-animate className={`bg-white p-6 rounded-xl border border-azure/10 hover:border-azure/30 transition-all duration-300 hover:shadow-lg stagger-${index + 1}`}>
                   <div className="w-14 h-14 bg-gradient-to-br from-azure to-primaryLight rounded-xl flex items-center justify-center mb-4">
                     <Icon className="w-7 h-7 text-white" />
                   </div>
@@ -272,16 +320,17 @@ const CleaningServicesPage = () => {
         </div>
       </section>
 
-      <section className="py-20 bg-gradient-to-br from-bg via-white to-blue-50">
+      {/* Testimonials */}
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-12" data-animate>
             <div className="inline-flex items-center px-4 py-2 bg-azure/10 text-azure text-sm font-medium rounded-full mb-4">Client Success Stories</div>
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-6">What Our Clients Say</h2>
-            <p className="text-lg text-primary/70 max-w-3xl mx-auto">Real feedback from organizations we've helped maintain clean, safe environments.</p>
+            <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-4">What Our Clients Say</h2>
+            <p className="text-lg text-primary/70 max-w-2xl mx-auto">Real feedback from organisations we've helped maintain clean, safe environments.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {testimonials.map((testimonial, index) => (
-              <div key={index} data-animate className={`bg-white p-8 rounded-2xl border border-azure/10 hover:border-azure/30 transition-all duration-300 hover:shadow-lg stagger-${index + 1}`}>
+              <div key={index} data-animate className={`bg-gradient-to-br from-azure/5 to-primaryLight/5 p-8 rounded-2xl border border-azure/10 hover:border-azure/30 transition-all duration-300 hover:shadow-lg stagger-${index + 1}`}>
                 <div className="flex gap-1 mb-4">
                   {[...Array(testimonial.rating)].map((_, i) => (
                     <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
@@ -303,6 +352,7 @@ const CleaningServicesPage = () => {
         </div>
       </section>
 
+      {/* Contact */}
       <section id="contact" className="py-20 bg-gradient-to-br from-azure via-azureSoft to-primary relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-20 left-10 w-40 h-40 bg-white rounded-full blur-3xl animate-float"></div>
@@ -312,7 +362,8 @@ const CleaningServicesPage = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div data-animate>
               <h2 className="text-3xl md:text-4xl font-heading font-bold text-white mb-6">Ready for Professional Cleaning Support?</h2>
-              <p className="text-lg text-white/90 leading-relaxed mb-8">Whether you need regular cleaning services or emergency cover, we're here to help. Get in touch to discuss your cleaning requirements.</p>
+              <p className="text-lg text-white/90 leading-relaxed mb-4">Whether you need regular cleaning services or emergency cover, we're here to help.</p>
+              <p className="text-white/80 leading-relaxed mb-8">Get in touch to discuss your cleaning requirements and we'll arrange the right team for you.</p>
               <div className="space-y-4">
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-lg flex items-center justify-center">
@@ -320,7 +371,7 @@ const CleaningServicesPage = () => {
                   </div>
                   <div>
                     <p className="text-white/70 text-sm">Call us</p>
-                    <a href="tel:+01623 255223" className="text-white font-semibold hover:text-yellow-300 transition-colors">+44 7438 733336</a>
+                    <a href="tel:+447438733336" className="text-white font-semibold hover:text-yellow-300 transition-colors">+44 7438 733336</a>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
@@ -343,11 +394,9 @@ const CleaningServicesPage = () => {
                   onSubmit={handleSubmit} 
                   className="space-y-4"
                 >
-                  {/* FormSubmit Configuration */}
                   <input type="hidden" name="_subject" value="Cleaning Services Request" />
                   <input type="hidden" name="_captcha" value="false" />
                   <input type="hidden" name="_template" value="table" />
-                  
                   <div>
                     <label htmlFor="name" className="block text-white/90 text-sm font-medium mb-2">Your Name *</label>
                     <input type="text" id="name" name="name" value={formData.name} onChange={handleInputChange} required className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50 backdrop-blur-sm" placeholder="John Smith" />
@@ -366,7 +415,7 @@ const CleaningServicesPage = () => {
                   </div>
                   <div>
                     <label htmlFor="message" className="block text-white/90 text-sm font-medium mb-2">Tell us about your cleaning needs *</label>
-                    <textarea id="message" name="message" value={formData.message} onChange={handleInputChange} required rows="4" className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50 backdrop-blur-sm resize-none" placeholder="Please describe your cleaning requirements, including facility type, frequency, and any specific needs..."></textarea>
+                    <textarea id="message" name="message" value={formData.message} onChange={handleInputChange} required rows="4" className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50 backdrop-blur-sm resize-none" placeholder="Describe your requirements — facility type, frequency, and any specific needs..."></textarea>
                   </div>
                   <button type="submit" className="w-full bg-white text-azure font-semibold py-4 px-6 rounded-lg hover:bg-gray-100 transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
                     <Send className="w-5 h-5" />Send Request

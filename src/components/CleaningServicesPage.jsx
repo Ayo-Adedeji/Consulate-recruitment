@@ -2,17 +2,22 @@ import { useState, useEffect } from 'react';
 import { 
   Sparkles, CheckCircle, ArrowRight, Shield, Award, Clock,
   Users, Building2, Heart, Home, Droplets, Wind,
-  Search, FileCheck, Phone, Mail, Send, Star, Zap, Target
+  Search, FileCheck, Phone, Mail, Send, Star, Zap, Target,
+  Sun, Calendar, Layers
 } from 'lucide-react';
 import Navbar from './Navbar';
 import Footer from './Footer';
+import gardenOne from '../assets/one.jpeg';
+import gardenTwo from '../assets/two.jpeg';
+import gardenThree from '../assets/three.jpeg';
 
 const CleaningServicesPage = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [activeTab, setActiveTab] = useState('daily');
   const [formData, setFormData] = useState({
     name: '', email: '', company: '', phone: '', message: ''
   });
-  
+
   useEffect(() => { setIsVisible(true); }, []);
 
   useEffect(() => {
@@ -33,60 +38,81 @@ const CleaningServicesPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // If validation passes, submit the form to FormSubmit
     e.target.submit();
   };
 
-  const whenNeeded = [
-    { icon: Zap, title: 'Short-Notice or Emergency Cover', description: 'Quick response for unexpected cleaning needs' },
-    { icon: Users, title: 'Staff Absences or Gaps', description: 'Reliable cover when your team is unavailable' },
-    { icon: Clock, title: 'Ongoing Scheduled Cleaning', description: 'Regular, consistent cleaning services' },
-    { icon: Building2, title: 'High-Traffic Environments', description: 'Maintaining cleanliness in busy spaces' },
-    { icon: Shield, title: 'Hygiene & Safety Standards', description: 'Meeting compliance and safety requirements' }
-  ];
-
-  const serviceSolutions = [
-    { icon: Users, title: 'Reliable & Punctual Staff', description: 'Dependable cleaning professionals' },
-    { icon: Award, title: 'Fully Trained & Vetted', description: 'Qualified and background-checked personnel' },
-    { icon: Clock, title: 'Flexible Support', description: 'Short-term and long-term arrangements' },
-    { icon: Sparkles, title: 'Consistent Quality', description: 'Attention to detail in every service' },
-    { icon: Shield, title: 'Health & Safety Compliance', description: 'Meeting all regulatory standards' }
-  ];
-
   const cleaningTypes = [
-    { icon: Building2, title: 'Commercial & Office Cleaning', description: 'Professional workspace maintenance' },
-    { icon: Heart, title: 'Care & Healthcare Facilities', description: 'Specialized cleaning for medical environments' },
-    { icon: Home, title: 'Residential & Communal', description: 'Living spaces and shared areas' },
-    { icon: Droplets, title: 'Deep & Specialist Cleaning', description: 'Thorough and specialized services' },
-    { icon: Wind, title: 'Ongoing Contract Cleaning', description: 'Regular scheduled maintenance' }
+    { icon: Building2, title: 'Commercial & Office Cleaning', description: 'Professional workspace maintenance for productive environments.' },
+    { icon: Heart, title: 'Care & Healthcare Facilities', description: 'Specialized cleaning meeting strict hygiene standards for medical settings.' },
+    { icon: Home, title: 'Residential & Communal', description: 'Living spaces and shared areas kept spotless and welcoming.' },
+    { icon: Droplets, title: 'Deep & Specialist Cleaning', description: 'Thorough treatments for areas requiring intensive attention.' },
+    { icon: Wind, title: 'Ongoing Contract Cleaning', description: 'Reliable scheduled maintenance you can count on every time.' }
   ];
 
   const processSteps = [
-    { icon: Search, title: 'Cleaning Requirement Assessment', description: 'Understanding your specific needs and standards.' },
-    { icon: Clock, title: 'Scheduling & Staffing', description: 'Arranging the right team at the right time.' },
-    { icon: Users, title: 'Deployment of Trained Staff', description: 'Professional cleaners ready to work.' },
-    { icon: FileCheck, title: 'Quality Monitoring', description: 'Regular checks and feedback collection.' },
-    { icon: CheckCircle, title: 'Ongoing Support', description: 'Continuous adjustments and improvements.' }
+    { icon: Search, step: '01', title: 'Requirement Assessment', description: 'We understand your specific needs, standards, and schedule.' },
+    { icon: Clock, step: '02', title: 'Scheduling & Staffing', description: 'The right team arranged at the right time for your space.' },
+    { icon: Users, step: '03', title: 'Deployment', description: 'Trained, vetted professionals arrive ready to deliver.' },
+    { icon: FileCheck, step: '04', title: 'Quality Monitoring', description: 'Regular checks and feedback to maintain high standards.' },
+    { icon: CheckCircle, step: '05', title: 'Ongoing Support', description: 'Continuous adjustments so service always improves.' }
   ];
 
-  const qualityStandards = [
-    { icon: Shield, title: 'Health & Safety Compliance', description: 'Full adherence to regulations' },
-    { icon: Droplets, title: 'Proper Cleaning Procedures', description: 'Industry-standard methods' },
-    { icon: Heart, title: 'Hygiene & Infection Control', description: 'Preventing contamination and spread' },
-    { icon: Users, title: 'Reliable Supervision', description: 'Accountable team management' },
-    { icon: Award, title: 'Consistent Service Delivery', description: 'Maintaining high standards' }
-  ];
+  const cleaningBenefits = {
+    daily: [
+      { title: 'Improved Health & Hygiene', description: 'Regular cleaning reduces dust, allergens, and bacteria, lowering the risk of respiratory issues and illness.' },
+      { title: 'Pest Prevention', description: 'Promptly removing food crumbs and spills eliminates the primary attractants for ants, cockroaches, and rodents.' },
+      { title: 'Reduced Stress & Anxiety', description: 'A tidy environment minimizes visual clutter, lowering cortisol levels and promoting mental clarity.' },
+      { title: 'Efficient Time Management', description: 'A few minutes each day prevents overwhelming multi-hour cleaning sessions during your free time.' },
+      { title: 'Extended Asset Lifespan', description: 'Daily removal of grit and dust prevents premature wear on flooring, furniture, and upholstery.' },
+      { title: 'Enhanced Safety', description: 'Keeping walkways clear of debris reduces the risk of trips and falls for all household members.' },
+      { title: 'Better Air Quality', description: 'Frequent dusting and vacuuming remove airborne particles, creating a fresher and more breathable indoor environment.' },
+      { title: 'Increased Productivity', description: 'An organized space allows for better focus and saves time otherwise spent searching for misplaced items.' },
+      { title: 'Superior Sleep Quality', description: 'A clean and organized bedroom promotes better sleep hygiene and helps the mind relax for a restful night.' },
+      { title: 'Constant Social Readiness', description: 'Daily maintenance ensures your home is always prepared for unexpected guests without the need for "panic cleaning."' },
+    ],
+    weekly: [
+      { title: 'Deep Allergen Removal', description: 'Weekly vacuuming of upholstery, rugs, and curtains combined with laundering bed linens eliminates dust mites and pet dander.' },
+      { title: 'Bacteria Eradication', description: 'Thoroughly disinfecting bathrooms and kitchens once a week prevents mold, mildew, and harmful bacteria like E. coli or Salmonella.' },
+      { title: 'Appliance Efficiency', description: 'Cleaning filters, wiping out microwaves, and descaling kettles weekly prevents grime buildup and keeps appliances running efficiently.' },
+      { title: 'Floor Preservation', description: 'A weekly deep mop or steam clean removes sticky residues and ingrained dirt that daily sweeping cannot reach.' },
+      { title: 'Inventory Management', description: 'Clearing out the refrigerator and pantry weekly helps identify expired items, reduce food waste, and plan shopping effectively.' },
+      { title: 'Odor Control', description: 'Deep cleaning trash bins, drains, and pet areas once a week neutralizes lingering odors at their source.' },
+      { title: 'Visual Restoration', description: 'Polishing mirrors, windows, and glass surfaces weekly removes smudges and streaks, brightening the home with more natural light.' },
+      { title: 'Structural Inspection', description: 'A weekly cleaning session serves as an informal home inspection, allowing you to spot minor leaks or cracks before they become costly.' },
+    ],
+    deep: [
+      { title: 'Comprehensive Sanitization', description: 'Deep cleaning moves furniture and appliances to reach hidden areas where dust, mold, and bacteria accumulate undisturbed.' },
+      { title: 'Indoor Air Quality Restoration', description: 'Cleaning HVAC vents, air ducts, and deep-cleaning carpets removes deeply embedded pollutants that compromise the air you breathe.' },
+      { title: 'Elimination of Hidden Allergens', description: 'Intensive cleaning targets hotspots like tops of tall cabinets, baseboards, and behind large appliances for allergy sufferers.' },
+      { title: 'Surface Restoration', description: 'Steam cleaning grout or conditioning leather furniture restores surfaces to their original appearance and prevents permanent staining.' },
+      { title: 'Pest Infestation Prevention', description: 'Reaching into the deepest corners of pantries and storage areas removes potential nesting sites for insects or rodents.' },
+      { title: 'Maximized Property Value', description: 'Consistent deep cleaning prevents the "lived-in" grime that leads to permanent damage, keeping fixtures in showroom condition.' },
+      { title: 'Mental Refreshment', description: 'The thoroughness of a deep clean provides a unique sense of renewal and order, serving as a powerful psychological reset.' },
+      { title: 'Appliance Longevity', description: 'Cleaning refrigerator coils, dishwasher interiors, and washing machine drums ensures these expensive assets operate at peak efficiency for years.' },
+    ]
+  };
 
-  const benefits = [
-    { icon: Sparkles, title: 'Clean & Safe Environments', description: 'Healthy spaces for everyone' },
-    { icon: Zap, title: 'Reduced Disruption', description: 'Minimal impact on operations' },
-    { icon: Target, title: 'Flexible & Scalable', description: 'Services that grow with your needs' },
-    { icon: Shield, title: 'Reliable Service', description: 'Dependable cleaning you can trust' }
+  const tabs = [
+    { id: 'daily', label: 'Daily Cleaning', icon: Sun },
+    { id: 'weekly', label: 'Weekly Cleaning', icon: Calendar },
+    { id: 'deep', label: 'Deep Cleaning', icon: Layers },
   ];
 
   const testimonials = [
-    { quote: "The cleaning team from Consulate has been exceptional. They're reliable, thorough, and always maintain the highest standards in our care facility.", author: "Emma Richardson", role: "Facility Manager", company: "Greenwood Care Home", rating: 5 },
-    { quote: "We've been using their cleaning services for over a year. The consistency and quality have been outstanding, and they're always responsive to our needs.", author: "David Chen", role: "Operations Director", company: "Metro Office Solutions", rating: 5 }
+    {
+      quote: "The cleaning team from Consulate has been exceptional. They're reliable, thorough, and always maintain the highest standards in our care facility.",
+      author: "Emma Richardson", role: "Facility Manager", company: "Greenwood Care Home", rating: 5, isPhoto: false
+    },
+    {
+      quote: "We've been using their cleaning services for over a year. The consistency and quality have been outstanding, and they're always responsive to our needs.",
+      author: "David Chen", role: "Operations Director", company: "Metro Office Solutions", rating: 5, isPhoto: false
+    },
+  ];
+
+  const gardenPhotos = [
+    { src: gardenOne, caption: 'Outdoor garden cleaning, Sutton in Ashfield' },
+    { src: gardenTwo, caption: 'Garden restoration, Sutton in Ashfield' },
+    { src: gardenThree, caption: 'Completed outdoor clean, Sutton in Ashfield' },
   ];
 
   return (
@@ -100,6 +126,7 @@ const CleaningServicesPage = () => {
         .stagger-5 { transition-delay: 0.5s; } .stagger-6 { transition-delay: 0.6s; }
       `}</style>
 
+      {/* Hero */}
       <section className="pt-32 pb-20 bg-gradient-to-br from-azure via-azureSoft to-primary relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-20 left-10 w-40 h-40 bg-white rounded-full blur-3xl animate-float"></div>
@@ -111,14 +138,14 @@ const CleaningServicesPage = () => {
               <Sparkles className="w-4 h-4 mr-2" />Professional Cleaning Services
             </div>
             <h1 className={`text-3xl md:text-5xl font-heading font-bold text-white mb-6 leading-tight transition-all duration-1000 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
-              Professional Cleaning Services<span className="block text-yellow-300 mt-2">You Can Rely On</span>
+              Cleaning Services<span className="block text-yellow-300 mt-2">You Can Rely On</span>
             </h1>
-            <p className={`text-lg md:text-xl text-white/90 max-w-4xl mx-auto leading-relaxed mb-8 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
-              Reliable, high-quality cleaning support to maintain safe, hygienic, and well-managed environments. Cleaning support ensures consistency, safety, and compliance without disruption to daily operations.
+            <p className={`text-lg md:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed mb-8 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
+              Reliable, high-quality cleaning for homes, offices, and specialist environments. We keep your spaces safe, hygienic, and consistently well-maintained.
             </p>
             <div className={`flex flex-col sm:flex-row gap-4 justify-center transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
               <a href="#contact" className="inline-flex items-center px-8 py-4 bg-white text-azure font-semibold rounded-xl hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
-                Request Cleaning Support<ArrowRight className="ml-2 w-5 h-5" />
+                Get a Free Quote <ArrowRight className="ml-2 w-5 h-5" />
               </a>
               <a href="#services" className="inline-flex items-center px-8 py-4 bg-transparent border-2 border-white text-white font-semibold rounded-xl hover:bg-white hover:text-azure transition-all duration-300">
                 View Our Services
@@ -128,60 +155,13 @@ const CleaningServicesPage = () => {
         </div>
       </section>
 
-      <section className="py-20 bg-gradient-to-br from-bg via-white to-blue-50">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-12" data-animate>
-            <div className="inline-flex items-center px-4 py-2 bg-azure/10 text-azure text-sm font-medium rounded-full mb-4">When You Need Us</div>
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-6">When Our Cleaning Services Are Needed</h2>
-            <p className="text-lg text-primary/70 max-w-3xl mx-auto">Professional cleaning support for every situation, ensuring your spaces remain clean, safe, and welcoming.</p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
-            {whenNeeded.map((item, index) => {
-              const Icon = item.icon;
-              return (
-                <div key={index} data-animate className={`bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border border-azure/10 hover:border-azure/30 group stagger-${index + 1}`}>
-                  <div className="w-14 h-14 bg-gradient-to-br from-azure to-primaryLight rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                    <Icon className="w-7 h-7 text-white" />
-                  </div>
-                  <h3 className="text-lg font-semibold text-primary mb-2">{item.title}</h3>
-                  <p className="text-sm text-primary/70">{item.description}</p>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-12" data-animate>
-            <div className="inline-flex items-center px-4 py-2 bg-azure/10 text-azure text-sm font-medium rounded-full mb-4">Our Solutions</div>
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-6">Our Cleaning Service Solution</h2>
-            <p className="text-lg text-primary/70 max-w-3xl mx-auto">What makes our cleaning service dependable, professional, and trusted by organizations across sectors.</p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
-            {serviceSolutions.map((solution, index) => {
-              const Icon = solution.icon;
-              return (
-                <div key={index} data-animate className={`bg-gradient-to-br from-azure/5 to-primaryLight/5 p-6 rounded-xl border border-azure/10 hover:border-azure/30 transition-all duration-300 hover:shadow-lg stagger-${index + 1}`}>
-                  <div className="w-12 h-12 bg-gradient-to-br from-azure to-primaryLight rounded-lg flex items-center justify-center mb-4">
-                    <Icon className="w-6 h-6 text-white" />
-                  </div>
-                  <h3 className="text-lg font-semibold text-primary mb-2">{solution.title}</h3>
-                  <p className="text-sm text-primary/70">{solution.description}</p>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
+      {/* Services We Provide */}
       <section id="services" className="py-20 bg-gradient-to-br from-bg via-white to-blue-50">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-12" data-animate>
-            <div className="inline-flex items-center px-4 py-2 bg-azure/10 text-azure text-sm font-medium rounded-full mb-4">Service Types</div>
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-6">Types of Cleaning Services We Provide</h2>
-            <p className="text-lg text-primary/70 max-w-3xl mx-auto">Comprehensive cleaning solutions tailored to your specific environment and requirements.</p>
+            <div className="inline-flex items-center px-4 py-2 bg-azure/10 text-azure text-sm font-medium rounded-full mb-4">What We Do</div>
+            <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-4">Types of Cleaning Services</h2>
+            <p className="text-lg text-primary/70 max-w-2xl mx-auto">From daily office upkeep to specialist deep cleans, we cover every environment with the same attention to detail.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
             {cleaningTypes.map((type, index) => {
@@ -200,22 +180,74 @@ const CleaningServicesPage = () => {
         </div>
       </section>
 
+      {/* Cleaning Benefits Tabs */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-12" data-animate>
-            <div className="inline-flex items-center px-4 py-2 bg-azure/10 text-azure text-sm font-medium rounded-full mb-4">Our Process</div>
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-6">How Our Cleaning Service Works</h2>
-            <p className="text-lg text-primary/70 max-w-3xl mx-auto">A clear, structured approach to delivering consistent, high-quality cleaning services.</p>
+            <div className="inline-flex items-center px-4 py-2 bg-azure/10 text-azure text-sm font-medium rounded-full mb-4">Why It Matters</div>
+            <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-4">The Real Benefits of a Cleaning Routine</h2>
+            <p className="text-lg text-primary/70 max-w-2xl mx-auto">Whether it's a quick daily tidy or a thorough deep clean, every level of cleaning delivers measurable results.</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+
+          {/* Tab Buttons */}
+          <div className="flex flex-wrap justify-center gap-3 mb-10" data-animate>
+            {tabs.map((tab) => {
+              const Icon = tab.icon;
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                  className={`inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-sm transition-all duration-300 ${
+                    activeTab === tab.id
+                      ? 'bg-azure text-white shadow-lg shadow-azure/30'
+                      : 'bg-azure/10 text-azure hover:bg-azure/20'
+                  }`}
+                >
+                  <Icon className="w-4 h-4" />
+                  {tab.label}
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Tab Content */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {cleaningBenefits[activeTab].map((benefit, index) => (
+              <div
+                key={`${activeTab}-${index}`}
+                className="bg-gradient-to-br from-azure/5 to-primaryLight/5 p-5 rounded-xl border border-azure/10 hover:border-azure/30 hover:shadow-md transition-all duration-300"
+              >
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-azure mt-0.5 shrink-0" />
+                  <div>
+                    <h4 className="font-semibold text-primary text-sm mb-1">{benefit.title}</h4>
+                    <p className="text-xs text-primary/65 leading-relaxed">{benefit.description}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* How It Works */}
+      <section className="py-20 bg-gradient-to-br from-bg via-white to-blue-50">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-12" data-animate>
+            <div className="inline-flex items-center px-4 py-2 bg-azure/10 text-azure text-sm font-medium rounded-full mb-4">Our Process</div>
+            <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-4">How It Works</h2>
+            <p className="text-lg text-primary/70 max-w-2xl mx-auto">A clear, structured approach so you always know what to expect from us.</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
             {processSteps.map((step, index) => {
               const Icon = step.icon;
               return (
-                <div key={index} data-animate className={`bg-gradient-to-br from-azure/5 to-primaryLight/5 p-6 rounded-xl border border-azure/10 hover:border-azure/30 transition-all duration-300 hover:shadow-lg stagger-${index + 1}`}>
-                  <div className="w-12 h-12 bg-gradient-to-br from-azure to-primaryLight rounded-lg flex items-center justify-center mb-4">
+                <div key={index} data-animate className={`relative bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border border-azure/10 hover:border-azure/30 group stagger-${index + 1}`}>
+                  <div className="absolute -top-3 -left-3 w-8 h-8 bg-azure text-white text-xs font-bold rounded-full flex items-center justify-center shadow">{step.step}</div>
+                  <div className="w-12 h-12 bg-gradient-to-br from-azure to-primaryLight rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
                     <Icon className="w-6 h-6 text-white" />
                   </div>
-                  <h3 className="text-lg font-semibold text-primary mb-2">{step.title}</h3>
+                  <h3 className="text-base font-semibold text-primary mb-2">{step.title}</h3>
                   <p className="text-sm text-primary/70">{step.description}</p>
                 </div>
               );
@@ -224,62 +256,40 @@ const CleaningServicesPage = () => {
         </div>
       </section>
 
+      {/* Outdoor Garden Cleaning Gallery — Sutton in Ashfield */}
+      {gardenPhotos.length > 0 && (
+        <section className="py-20 bg-white">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="text-center mb-12" data-animate>
+              <div className="inline-flex items-center px-4 py-2 bg-azure/10 text-azure text-sm font-medium rounded-full mb-4">Recent Work</div>
+              <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-4">Outdoor Garden Cleaning</h2>
+              <p className="text-lg text-primary/70 max-w-2xl mx-auto">A recent outdoor garden cleaning project completed in Sutton in Ashfield.</p>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {gardenPhotos.map((photo, index) => (
+                <div key={index} data-animate className={`rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 group stagger-${(index % 6) + 1}`}>
+                  <img src={photo.src} alt={photo.caption} className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500" />
+                  {photo.caption && (
+                    <div className="p-4 bg-gradient-to-br from-azure/5 to-primaryLight/5 border-t border-azure/10">
+                      <p className="text-sm text-primary/70">{photo.caption}</p>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Testimonials */}
       <section className="py-20 bg-gradient-to-br from-bg via-white to-blue-50">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-12" data-animate>
-            <div className="inline-flex items-center px-4 py-2 bg-azure/10 text-azure text-sm font-medium rounded-full mb-4">Quality Assurance</div>
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-6">Quality, Safety & Standards</h2>
-            <p className="text-lg text-primary/70 max-w-3xl mx-auto">Our commitment to excellence, compliance, and trust in every cleaning service we provide.</p>
+            <div className="inline-flex items-center px-4 py-2 bg-azure/10 text-azure text-sm font-medium rounded-full mb-4">Client Stories</div>
+            <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-4">What Our Clients Say</h2>
+            <p className="text-lg text-primary/70 max-w-2xl mx-auto">Real feedback from people and organisations we've helped.</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
-            {qualityStandards.map((standard, index) => {
-              const Icon = standard.icon;
-              return (
-                <div key={index} data-animate className={`bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border border-azure/10 hover:border-azure/30 group stagger-${index + 1}`}>
-                  <div className="w-12 h-12 bg-gradient-to-br from-azure to-primaryLight rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                    <Icon className="w-6 h-6 text-white" />
-                  </div>
-                  <h3 className="text-lg font-semibold text-primary mb-2">{standard.title}</h3>
-                  <p className="text-sm text-primary/70">{standard.description}</p>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-12" data-animate>
-            <div className="inline-flex items-center px-4 py-2 bg-azure/10 text-azure text-sm font-medium rounded-full mb-4">Client Benefits</div>
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-6">Benefits to Your Organisation</h2>
-            <p className="text-lg text-primary/70 max-w-3xl mx-auto">Value-driven outcomes that make a real difference to your operations and environment.</p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {benefits.map((benefit, index) => {
-              const Icon = benefit.icon;
-              return (
-                <div key={index} data-animate className={`bg-gradient-to-br from-azure/5 to-primaryLight/5 p-6 rounded-xl border border-azure/10 hover:border-azure/30 transition-all duration-300 hover:shadow-lg stagger-${index + 1}`}>
-                  <div className="w-14 h-14 bg-gradient-to-br from-azure to-primaryLight rounded-xl flex items-center justify-center mb-4">
-                    <Icon className="w-7 h-7 text-white" />
-                  </div>
-                  <h3 className="text-lg font-semibold text-primary mb-2">{benefit.title}</h3>
-                  <p className="text-sm text-primary/70">{benefit.description}</p>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-20 bg-gradient-to-br from-bg via-white to-blue-50">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-12" data-animate>
-            <div className="inline-flex items-center px-4 py-2 bg-azure/10 text-azure text-sm font-medium rounded-full mb-4">Client Success Stories</div>
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-6">What Our Clients Say</h2>
-            <p className="text-lg text-primary/70 max-w-3xl mx-auto">Real feedback from organizations we've helped maintain clean, safe environments.</p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {testimonials.map((testimonial, index) => (
               <div key={index} data-animate className={`bg-white p-8 rounded-2xl border border-azure/10 hover:border-azure/30 transition-all duration-300 hover:shadow-lg stagger-${index + 1}`}>
                 <div className="flex gap-1 mb-4">
@@ -303,6 +313,7 @@ const CleaningServicesPage = () => {
         </div>
       </section>
 
+      {/* Contact */}
       <section id="contact" className="py-20 bg-gradient-to-br from-azure via-azureSoft to-primary relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-20 left-10 w-40 h-40 bg-white rounded-full blur-3xl animate-float"></div>
@@ -312,7 +323,7 @@ const CleaningServicesPage = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div data-animate>
               <h2 className="text-3xl md:text-4xl font-heading font-bold text-white mb-6">Ready for Professional Cleaning Support?</h2>
-              <p className="text-lg text-white/90 leading-relaxed mb-8">Whether you need regular cleaning services or emergency cover, we're here to help. Get in touch to discuss your cleaning requirements.</p>
+              <p className="text-lg text-white/90 leading-relaxed mb-8">Whether you need regular cleaning or emergency cover, we're here to help. Get in touch to discuss your requirements.</p>
               <div className="space-y-4">
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-lg flex items-center justify-center">
@@ -320,7 +331,7 @@ const CleaningServicesPage = () => {
                   </div>
                   <div>
                     <p className="text-white/70 text-sm">Call us</p>
-                    <a href="tel:+01623 255223" className="text-white font-semibold hover:text-yellow-300 transition-colors">+44 7438 733336</a>
+                    <a href="tel:07786043535" className="text-white font-semibold hover:text-yellow-300 transition-colors">07786 043535</a>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
@@ -329,7 +340,7 @@ const CleaningServicesPage = () => {
                   </div>
                   <div>
                     <p className="text-white/70 text-sm">Email us</p>
-                    <a href="mailto:admin@consulaterecruitment.co.uk" className="text-white font-semibold hover:text-yellow-300 transition-colors">admin@consulaterecruitment.co.uk</a>
+                    <a href="mailto:consulatecleaning25@gmail.com" className="text-white font-semibold hover:text-yellow-300 transition-colors">consulatecleaning25@gmail.com</a>
                   </div>
                 </div>
               </div>
@@ -337,17 +348,16 @@ const CleaningServicesPage = () => {
             <div data-animate className="stagger-1">
               <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20">
                 <h3 className="text-2xl font-bold text-white mb-6">Request a Cleaning Quote</h3>
-                <form 
-                  action="https://formsubmit.co/admin@consulaterecruitment.co.uk"
+                <form
+                  action="https://formsubmit.co/consulatecleaning25@gmail.com"
                   method="POST"
-                  onSubmit={handleSubmit} 
+                  onSubmit={handleSubmit}
                   className="space-y-4"
                 >
-                  {/* FormSubmit Configuration */}
                   <input type="hidden" name="_subject" value="Cleaning Services Request" />
                   <input type="hidden" name="_captcha" value="false" />
                   <input type="hidden" name="_template" value="table" />
-                  
+
                   <div>
                     <label htmlFor="name" className="block text-white/90 text-sm font-medium mb-2">Your Name *</label>
                     <input type="text" id="name" name="name" value={formData.name} onChange={handleInputChange} required className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50 backdrop-blur-sm" placeholder="John Smith" />
@@ -357,16 +367,16 @@ const CleaningServicesPage = () => {
                     <input type="email" id="email" name="email" value={formData.email} onChange={handleInputChange} required className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50 backdrop-blur-sm" placeholder="john@example.com" />
                   </div>
                   <div>
-                    <label htmlFor="company" className="block text-white/90 text-sm font-medium mb-2">Company Name</label>
-                    <input type="text" id="company" name="company" value={formData.company} onChange={handleInputChange} className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50 backdrop-blur-sm" placeholder="Your Company" />
+                    <label htmlFor="company" className="block text-white/90 text-sm font-medium mb-2">Company / Property Name</label>
+                    <input type="text" id="company" name="company" value={formData.company} onChange={handleInputChange} className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50 backdrop-blur-sm" placeholder="Your Company or Property" />
                   </div>
                   <div>
                     <label htmlFor="phone" className="block text-white/90 text-sm font-medium mb-2">Phone Number</label>
-                    <input type="tel" id="phone" name="phone" value={formData.phone} onChange={handleInputChange} className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50 backdrop-blur-sm" placeholder="+44 7XXX XXXXXX" />
+                    <input type="tel" id="phone" name="phone" value={formData.phone} onChange={handleInputChange} className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50 backdrop-blur-sm" placeholder="07XXX XXXXXX" />
                   </div>
                   <div>
                     <label htmlFor="message" className="block text-white/90 text-sm font-medium mb-2">Tell us about your cleaning needs *</label>
-                    <textarea id="message" name="message" value={formData.message} onChange={handleInputChange} required rows="4" className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50 backdrop-blur-sm resize-none" placeholder="Please describe your cleaning requirements, including facility type, frequency, and any specific needs..."></textarea>
+                    <textarea id="message" name="message" value={formData.message} onChange={handleInputChange} required rows="4" className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50 backdrop-blur-sm resize-none" placeholder="Describe your requirements — facility type, frequency, any specific needs..."></textarea>
                   </div>
                   <button type="submit" className="w-full bg-white text-azure font-semibold py-4 px-6 rounded-lg hover:bg-gray-100 transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
                     <Send className="w-5 h-5" />Send Request
@@ -377,6 +387,7 @@ const CleaningServicesPage = () => {
           </div>
         </div>
       </section>
+
       <Footer />
     </div>
   );

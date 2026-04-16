@@ -10,6 +10,12 @@ import Footer from './Footer';
 import gardenOne from '../assets/one.jpeg';
 import gardenTwo from '../assets/two.jpeg';
 import gardenThree from '../assets/three.jpeg';
+import frame1 from '../assets/frame1.jpeg';
+import frame2 from '../assets/frame2.jpeg';
+import frame3 from '../assets/frame3.jpeg';
+import frame4 from '../assets/frame4.jpeg';
+import frame5 from '../assets/frame5.jpeg';
+import frame6 from '../assets/frame6.jpeg';
 
 const CleaningServicesPage = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -115,6 +121,15 @@ const CleaningServicesPage = () => {
     { src: gardenThree, caption: 'Completed outdoor clean, Sutton in Ashfield' },
   ];
 
+  const deliverables = [
+    { image: frame1, caption: 'Double Bedroom Cleaning' },
+    { image: frame2, caption: 'Living Room Cleaning' },
+    { image: frame3, caption: 'Double Bedroom — After Clean' },
+    { image: frame4, caption: 'Bathroom & Toilet Cleaning' },
+    { image: frame5, caption: 'Single Bedroom Cleaning' },
+    { image: frame6, caption: 'Oven & Appliance Cleaning' },
+  ];
+
   return (
     <div className="min-h-screen bg-white">
       <Navbar />
@@ -180,8 +195,30 @@ const CleaningServicesPage = () => {
         </div>
       </section>
 
-      {/* Cleaning Benefits Tabs */}
+      {/* Our Deliverables */}
       <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-12" data-animate>
+            <div className="inline-flex items-center px-4 py-2 bg-azure/10 text-azure text-sm font-medium rounded-full mb-4">Our Work</div>
+            <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-4">Our Deliverables</h2>
+            <p className="text-lg text-primary/70 max-w-2xl mx-auto">A glimpse of the spaces we transform — clean, safe, and ready for use.</p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {deliverables.map((item, index) => (
+              <div key={index} data-animate className={`group rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 stagger-${index + 1}`}>
+                <div className="overflow-hidden h-56">
+                  <img src={item.image} alt={item.caption} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                </div>
+                <div className="bg-gradient-to-br from-azure/5 to-primaryLight/5 border border-azure/10 px-5 py-4">
+                  <p className="text-primary font-semibold text-center">{item.caption}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Cleaning Benefits Tabs */}      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-12" data-animate>
             <div className="inline-flex items-center px-4 py-2 bg-azure/10 text-azure text-sm font-medium rounded-full mb-4">Why It Matters</div>

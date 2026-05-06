@@ -17,6 +17,7 @@ import Marquee from '../components/Marquee'
 import RecentBlogs from '../components/RecentBlogs'
 import Books from '../components/Books'
 import FloatingButtons from '../components/FloatingButtons'
+import CodeOfSolomonBanner from '../components/CodeOfSolomonBanner'
 
 const Home = () => {
   return (
@@ -38,6 +39,7 @@ const Home = () => {
         <Reviews/>
         <Process/>
         <IcoImage/>
+        <CodeOfSolomonBanner/>
         <Footer/>
         
         {/* Floating Buttons */}

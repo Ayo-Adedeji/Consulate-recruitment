@@ -187,6 +187,29 @@ const CleaningServicesPage = () => {
         </div>
       </section>
 
+      {/* Garden Cleaning Gallery */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-12" data-animate>
+            <div className="inline-flex items-center px-4 py-2 bg-azure/10 text-azure text-sm font-medium rounded-full mb-4">Outdoor Cleaning</div>
+            <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-4">Garden & Outdoor Cleaning</h2>
+            <p className="text-lg text-primary/70 max-w-2xl mx-auto">We also handle outdoor spaces — from garden clearances to full exterior cleans, leaving every area spotless.</p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            {gardenPhotos.map((photo, index) => (
+              <div key={index} data-animate className={`group rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 stagger-${index + 1}`}>
+                <div className="overflow-hidden h-64">
+                  <img src={photo.src} alt={photo.caption} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                </div>
+                <div className="bg-gradient-to-br from-azure/5 to-primaryLight/5 border border-azure/10 px-5 py-4">
+                  <p className="text-primary font-semibold text-center text-sm">{photo.caption}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Our Deliverables */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
@@ -296,29 +319,6 @@ const CleaningServicesPage = () => {
                     <p className="font-semibold text-primary">{testimonial.author}</p>
                     <p className="text-sm text-primary/60">{testimonial.role}, {testimonial.company}</p>
                   </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Garden Cleaning Gallery */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-12" data-animate>
-            <div className="inline-flex items-center px-4 py-2 bg-azure/10 text-azure text-sm font-medium rounded-full mb-4">Outdoor Cleaning</div>
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-4">Garden & Outdoor Cleaning</h2>
-            <p className="text-lg text-primary/70 max-w-2xl mx-auto">We also handle outdoor spaces — from garden clearances to full exterior cleans, leaving every area spotless.</p>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            {gardenPhotos.map((photo, index) => (
-              <div key={index} data-animate className={`group rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 stagger-${index + 1}`}>
-                <div className="overflow-hidden h-64">
-                  <img src={photo.src} alt={photo.caption} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                </div>
-                <div className="bg-gradient-to-br from-azure/5 to-primaryLight/5 border border-azure/10 px-5 py-4">
-                  <p className="text-primary font-semibold text-center text-sm">{photo.caption}</p>
                 </div>
               </div>
             ))}

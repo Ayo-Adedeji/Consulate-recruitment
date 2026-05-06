@@ -7,13 +7,9 @@ import {
 } from 'lucide-react';
 import Navbar from './Navbar';
 import Footer from './Footer';
-<<<<<<< HEAD
-import cleaningBg from '../assets/cleaning_lady.jpg';
-=======
 import gardenOne from '../assets/one.jpeg';
 import gardenTwo from '../assets/two.jpeg';
 import gardenThree from '../assets/three.jpeg';
->>>>>>> 7aaf170ccef07e7ea6b3312b4a5d00d8490768fd
 import frame1 from '../assets/frame1.jpeg';
 import frame2 from '../assets/frame2.jpeg';
 import frame3 from '../assets/frame3.jpeg';
